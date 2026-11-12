@@ -1,0 +1,139 @@
+/* FJC Handball — thème Material personnalisé. Modifiez les trois couleurs ci-dessous. */
+:root{--fjc-red:#d7192e;--fjc-black:#101115;--fjc-white:#ffffff;--fjc-grey:#f3f3f4;--fjc-shell:1180px}
+[data-md-color-scheme="default"]{--md-primary-fg-color:#111216;--md-primary-bg-color:#ffffff;--md-accent-fg-color:#d7192e;--md-typeset-a-color:#c91529}
+.md-header{background:#0f1013!important;box-shadow:none;border-bottom:1px solid rgba(255,255,255,.09)}
+.md-header__title{font-weight:800;letter-spacing:.04em}
+.md-tabs{background:#b80c23!important}
+.md-tabs__link{font-weight:800;letter-spacing:.035em;opacity:.78}
+.md-tabs__link--active,.md-tabs__link:hover{opacity:1}
+.md-content a:hover{color:#a60a1b}
+.md-main__inner{min-height:60vh}
+.md-typeset h1,.md-typeset h2{font-weight:850}
+/* L'accueil occupe toute la largeur, sans colonnes de documentation. */
+body:has(.fjc-home) .md-sidebar,body:has(.fjc-home) .md-header__source{display:none}
+body:has(.fjc-home) .md-main__inner,body:has(.fjc-home) .md-content,body:has(.fjc-home) .md-content__inner{max-width:none!important;width:100%;margin:0;padding:0}
+body:has(.fjc-home) .md-content__inner::before{display:none}
+body:has(.fjc-home) .md-main__inner{display:block}
+body:has(.fjc-home) .md-main{overflow:hidden}
+body:has(.fjc-home) .md-footer{display:none}
+.fjc-home{color:#141418;line-height:1.45;font-size:16px;overflow:hidden;font-family:Roboto,Arial,sans-serif}
+.fjc-home *{box-sizing:border-box}
+.fjc-home a{text-decoration:none;transition:color .25s,background-color .25s,transform .25s,box-shadow .25s}
+.fjc-home h1,.fjc-home h2,.fjc-home h3,.fjc-home p{margin:0}
+.fjc-home h1,.fjc-home h2,.fjc-home h3{font-family:Roboto,"Arial Narrow",Arial,sans-serif;letter-spacing:-.035em;line-height:1.02}
+.fjc-shell{max-width:var(--fjc-shell);width:calc(100% - 64px);margin:0 auto}
+.fjc-hero{min-height:640px;position:relative;display:flex;align-items:center;overflow:hidden;color:#fff;background:radial-gradient(circle at 79% 41%,#3b2227 0,#17151a 26%,#0c0d11 67%),linear-gradient(135deg,#19191c,#08090b)}
+.fjc-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,#09090c 10%,rgba(9,9,12,.95) 39%,transparent 75%),repeating-linear-gradient(125deg,transparent 0,transparent 135px,rgba(255,255,255,.018) 136px,rgba(255,255,255,.018) 138px);z-index:1}
+.fjc-hero::after{content:"";position:absolute;width:370px;height:950px;background:linear-gradient(180deg,rgba(231,24,48,.93),rgba(114,8,24,.72));transform:rotate(25deg);right:10%;top:-160px;opacity:.87}
+.fjc-hero__mesh{position:absolute;inset:0;background:radial-gradient(circle at 75% 32%,rgba(255,255,255,.13),transparent 33%),linear-gradient(125deg,transparent 36%,rgba(215,25,46,.18) 50%,transparent 66%);z-index:2;pointer-events:none}
+.fjc-hero__layout{display:flex;position:relative;z-index:4;align-items:center;min-height:640px}
+.fjc-hero__copy{max-width:760px;padding:90px 0 108px;position:relative;z-index:3}
+.fjc-kicker{font-size:12px;letter-spacing:.23em;font-weight:900;margin-bottom:25px;display:flex;align-items:center;gap:12px;color:#f1f1f1}
+.fjc-dot{display:inline-block;width:8px;height:8px;background:var(--fjc-red);border-radius:50%;box-shadow:0 0 0 5px rgba(215,25,46,.2)}
+.fjc-home .fjc-hero h1{font-size:clamp(43px,6.3vw,92px);font-weight:950;line-height:.96;letter-spacing:-.055em;color:#fff;max-width:800px}
+.fjc-hero h1 em{font-style:normal;color:#ed2540}
+.fjc-home .fjc-hero__copy p{font-size:17px;line-height:1.75;color:#cccbd0;max-width:550px;margin:27px 0 30px}
+.fjc-hero__buttons{display:flex;flex-wrap:wrap;gap:12px}
+.fjc-button{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;padding:18px 22px;font-weight:900;font-size:12px;letter-spacing:.07em;min-height:52px;line-height:1.1;border:2px solid transparent}
+.fjc-home .fjc-button:hover{transform:translateY(-3px);color:inherit}
+.fjc-button span{font-size:21px;line-height:.6}
+.fjc-button--red{background:var(--fjc-red);color:#fff!important;border-color:var(--fjc-red)}
+.fjc-button--red:hover{background:#f01d35}
+.fjc-button--border{border-color:rgba(255,255,255,.5);color:#fff!important;background:rgba(0,0,0,.1)}
+.fjc-button--border:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.fjc-button--white{background:#fff;color:#121212!important}
+.fjc-hero__aside{position:absolute;inset:0;pointer-events:none}
+.fjc-hero__watermark{font-size:min(31vw,460px);font-weight:1000;position:absolute;right:-13%;bottom:-14%;line-height:1;color:rgba(255,255,255,.075);letter-spacing:-.09em;transform:rotate(-10deg);font-style:italic;user-select:none}
+.fjc-hero__vertical{position:absolute;right:0;top:42%;writing-mode:vertical-rl;font-weight:900;font-size:10px;letter-spacing:.32em;opacity:.7}
+.fjc-scroll-cue{position:absolute;left:max(32px,calc((100vw - var(--fjc-shell))/2));bottom:28px;color:#fff!important;font-weight:900;font-size:11px;letter-spacing:.15em;z-index:4;display:flex;align-items:center;gap:17px}
+.fjc-scroll-cue span{font-size:20px;color:#f1243e}
+.fjc-hero__sidecaption{display:none}
+.fjc-stripe{background:var(--fjc-red);color:#fff;min-height:58px;display:flex;align-items:center}
+.fjc-stripe__inner{display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:11px;letter-spacing:.15em;font-weight:900}
+.fjc-stripe__inner span:nth-child(even){font-size:18px;color:rgba(255,255,255,.65)}
+.fjc-section{padding:90px 0 95px}
+.fjc-section--light{background:#fff}
+.fjc-section--muted{background:#f2f2f3}
+.fjc-section__head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:34px}
+.fjc-eyebrow{color:var(--fjc-red);font-size:11px;font-weight:950;letter-spacing:.2em;margin-bottom:15px!important}
+.fjc-home .fjc-section h2{font-size:clamp(35px,4.3vw,58px);font-weight:950;color:#15151a}
+.fjc-home h2 span{color:var(--fjc-red)}
+.fjc-home .fjc-lead{max-width:580px;color:#64646e;font-size:15px;line-height:1.8;margin-top:14px}
+.fjc-arrows{display:flex;gap:8px}
+.fjc-arrows button{height:45px;width:45px;border:1px solid #d3d3d6;background:#fff;cursor:pointer;font-size:21px;font-weight:700;transition:.2s}
+.fjc-arrows button:hover{background:var(--fjc-red);color:#fff;border-color:var(--fjc-red)}
+.fjc-team-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 42px)/3);gap:21px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 0 7px;scroll-behavior:smooth}
+.fjc-team-track::-webkit-scrollbar{display:none}
+.fjc-team-card{height:384px;position:relative;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;overflow:hidden;padding:25px;color:#fff!important;background:#1a1a22;scroll-snap-align:start}
+.fjc-team-card::before{content:"";position:absolute;inset:0;z-index:-2;transition:transform .5s ease;}
+.fjc-team-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.87),rgba(0,0,0,.18) 65%);z-index:-1}
+.fjc-team-card:hover::before{transform:scale(1.08)}
+.fjc-team-card--one::before{background:linear-gradient(130deg,#bb1024,#42131d 70%)}
+.fjc-team-card--two::before{background:linear-gradient(130deg,#41414c,#14151b 70%)}
+.fjc-team-card--three::before{background:linear-gradient(120deg,#c71f31,#200f16 75%)}
+.fjc-team-card--four::before{background:linear-gradient(120deg,#6c737b,#17181b 75%)}
+.fjc-team-card__index{letter-spacing:.16em;font-size:10px;font-weight:800;position:relative;z-index:1}
+.fjc-team-card__art{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;z-index:0}
+.fjc-team-card__art:before{content:"";width:240px;height:240px;border:34px solid rgba(255,255,255,.07);border-radius:50%;position:absolute;right:-70px;top:38px}
+.fjc-team-card__art span{font-weight:1000;font-size:180px;font-style:italic;opacity:.11;transform:rotate(-12deg)}
+.fjc-team-card__base{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.fjc-home .fjc-team-card h3{font-size:32px;line-height:1.0;font-weight:950;color:#fff}
+.fjc-team-card__base>span{font-size:11px;letter-spacing:.15em;font-weight:900;color:#f5a5ad}
+.fjc-centered-action{text-align:center;margin-top:27px}
+.fjc-text-link{color:#19191d!important;font-size:12px;font-weight:950;letter-spacing:.095em;white-space:nowrap;padding:11px 0;border-bottom:2px solid var(--fjc-red)}
+.fjc-text-link:hover{color:var(--fjc-red)!important}
+.fjc-text-link span{margin-left:15px}
+.fjc-news-grid{display:grid;grid-template-columns:1.24fr 1fr 1fr;gap:20px}
+.fjc-news-card{display:flex;flex-direction:column;background:#fff;color:#18191d!important;min-width:0;box-shadow:0 8px 30px rgba(0,0,0,.035)}
+.fjc-news-card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,0,0,.09)}
+.fjc-news-card__visual{height:188px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.fjc-news-card--featured .fjc-news-card__visual{height:225px}
+.fjc-news-card__visual::after{content:"";width:150px;height:150px;border:18px solid rgba(255,255,255,.07);border-radius:50%;position:absolute;right:-25px;bottom:-60px}
+.fjc-news-card__visual span{font-weight:1000;color:rgba(255,255,255,.17);font-size:42px;letter-spacing:-.08em;transform:rotate(-10deg)}
+.fjc-news-card__visual--red{background:linear-gradient(135deg,#ae1022,#ee263d)}
+.fjc-news-card__visual--black{background:linear-gradient(135deg,#1c1e24,#626571)}
+.fjc-news-card__visual--light{background:linear-gradient(135deg,#76111b,#d62b3c)}
+.fjc-news-card__content{padding:25px 24px 28px;display:flex;flex-direction:column;flex:1;align-items:start}
+.fjc-tag{background:#fae7e9;color:#b70d24;font-weight:900;font-size:10px;letter-spacing:.12em;padding:6px 8px}
+.fjc-home .fjc-news-card h3{margin-top:15px;font-size:24px;line-height:1.18;font-weight:900}
+.fjc-home .fjc-news-card p{font-size:13px;line-height:1.7;color:#68686e;margin-top:12px;margin-bottom:25px}
+.fjc-readmore{margin-top:auto;font-size:11px;letter-spacing:.09em;font-weight:900;color:#be172b}
+.fjc-gallery{color:#fff;background:#16171b}
+.fjc-gallery .fjc-section__head h2{color:#fff}
+.fjc-gallery .fjc-lead{color:#b5b4bc}
+.fjc-text-link--light{color:#fff!important}
+.fjc-gallery-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:18px}
+.fjc-gallery-tile{height:288px;position:relative;overflow:hidden;isolation:isolate;background:#202228;color:#fff!important}
+.fjc-gallery-tile::before{content:"";position:absolute;inset:0;z-index:-1;transition:transform .5s}
+.fjc-gallery-tile:hover::before{transform:scale(1.1)}
+.fjc-gallery-tile--a::before{background:linear-gradient(130deg,#c91c2c,#2c0b14 85%)}
+.fjc-gallery-tile--b::before{background:linear-gradient(135deg,#666874,#1a1b22 85%)}
+.fjc-gallery-tile--c::before{background:linear-gradient(135deg,#641622,#1a1c23 85%)}
+.fjc-gallery-tile__ghost{font-size:150px;letter-spacing:-.09em;font-weight:950;position:absolute;top:8px;right:0;color:rgba(255,255,255,.075);font-style:italic;line-height:1}
+.fjc-gallery-tile__caption{position:absolute;left:20px;right:20px;bottom:20px;font-size:19px;font-weight:950;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.3);padding-top:17px}
+.fjc-join{background:var(--fjc-red);color:#fff;position:relative;overflow:hidden}
+.fjc-join::before{content:"FJC";position:absolute;right:2%;bottom:-88px;font-weight:1000;font-size:310px;color:rgba(255,255,255,.07);font-style:italic;line-height:1;letter-spacing:-.11em}
+.fjc-join__inner{min-height:262px;display:flex;align-items:center;justify-content:space-between;gap:50px;position:relative}
+.fjc-join__inner p{font-size:11px;font-weight:950;letter-spacing:.2em;color:#ffe8ed;margin-bottom:11px}
+.fjc-home .fjc-join h2{font-size:clamp(28px,3.5vw,47px);color:#fff;max-width:700px;font-weight:950}
+.fjc-join h2 em{font-style:normal;color:#111117}
+.fjc-partners{background:#fff}
+.fjc-partners__placeholders{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fjc-partners__placeholders div{height:110px;display:grid;place-items:center;background:#f2f2f3;border:1px dashed #c9c9cb;color:#97989d;font-size:12px;font-weight:900;letter-spacing:.13em}
+.fjc-footer{background:#0c0d10;color:#fff;padding:65px 0 62px}
+.fjc-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.1fr;gap:40px}
+.fjc-footer__brand{font-size:38px;line-height:1;font-weight:1000;letter-spacing:-.04em}
+.fjc-footer__brand span{color:var(--fjc-red);font-size:17px;letter-spacing:.07em}
+.fjc-home .fjc-footer p{font-size:13px;line-height:1.9;color:#a5a5ac;margin-top:15px}
+.fjc-footer h3{font-weight:950;font-size:12px;letter-spacing:.1em;color:#fff;margin-bottom:22px}
+.fjc-footer a{display:block;color:#adadb4;font-size:13px;margin:9px 0}
+.fjc-footer a:hover{color:#fff}
+/* Styles des pages intérieures */
+.md-content__inner:not(:has(.fjc-home)){padding-bottom:3rem}
+.md-content__inner:not(:has(.fjc-home)) h1{color:#15151b;letter-spacing:-.035em}
+.md-content__inner:not(:has(.fjc-home)) h2{border-bottom:2px solid #e7e7ea;padding-bottom:.35em}
+.fjc-contact-note{border-left:4px solid var(--fjc-red);background:#faf1f2;padding:17px 20px;margin:24px 0}
+/* Animations discrètes, respectueuses du mode réduction des mouvements */
+@media(prefers-reduced-motion:no-preference){.fjc-home [data-fjc-reveal]{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.fjc-home [data-fjc-reveal].fjc-is-visible{opacity:1;transform:none}}
+@media(max-width:950px){.fjc-shell{width:calc(100% - 42px)}.fjc-hero,.fjc-hero__layout{min-height:570px}.fjc-hero__copy{max-width:680px}.fjc-hero::after{right:-28%;opacity:.54}.fjc-team-track{grid-auto-columns:calc((100% - 21px)/2)}.fjc-news-grid{grid-template-columns:1fr 1fr}.fjc-news-card--featured{grid-column:span 2}.fjc-news-card--featured{display:grid;grid-template-columns:1fr 1fr}.fjc-news-card--featured .fjc-news-card__visual{height:100%;min-height:230px}.fjc-gallery-grid{grid-template-columns:1fr 1fr}.fjc-gallery-tile:first-child{grid-column:span 2}.fjc-partners__placeholders{grid-template-columns:repeat(2,1fr)}.fjc-footer__grid{grid-template-columns:2fr 1fr 1fr;gap:28px}}
+@media(max-width:620px){.fjc-shell{width:calc(100% - 36px)}.fjc-hero,.fjc-hero__layout{min-height:575px}.fjc-hero__copy{padding:75px 0 95px}.fjc-kicker{font-size:10px;letter-spacing:.16em}.fjc-home .fjc-hero h1{font-size:clamp(43px,10.7vw,67px)}.fjc-home .fjc-hero__copy p{font-size:14px;line-height:1.6}.fjc-hero::after{right:-110%;opacity:.45;transform:rotate(34deg)}.fjc-hero__vertical{display:none}.fjc-hero__watermark{font-size:300px;right:-36%;bottom:-7%}.fjc-hero__buttons{flex-direction:column;align-items:stretch;max-width:315px}.fjc-button{padding:16px 18px;min-height:50px}.fjc-scroll-cue{left:18px}.fjc-stripe__inner{justify-content:center;flex-wrap:wrap;gap:10px 14px;padding:13px 0;font-size:9px}.fjc-stripe__inner span:nth-last-child(-n+2){display:none}.fjc-section{padding:62px 0 66px}.fjc-section__head{align-items:start;gap:20px;flex-direction:column}.fjc-home .fjc-section h2{font-size:37px}.fjc-home .fjc-lead{font-size:14px}.fjc-team-track{grid-auto-columns:minmax(245px,78%);gap:13px}.fjc-team-card{height:350px}.fjc-news-grid{display:grid;grid-template-columns:1fr}.fjc-news-card--featured{display:flex;grid-column:auto}.fjc-news-card--featured .fjc-news-card__visual{height:190px;min-height:0}.fjc-news-card__visual{height:180px}.fjc-news-card__content{padding:20px}.fjc-gallery-grid{grid-template-columns:1fr}.fjc-gallery-tile:first-child{grid-column:auto}.fjc-gallery-tile{height:220px}.fjc-join__inner{padding:50px 0;min-height:0;align-items:start;flex-direction:column;gap:27px}.fjc-partners__placeholders div{height:90px;font-size:10px}.fjc-footer__grid{grid-template-columns:1fr 1fr;gap:32px}.fjc-footer__grid>div:first-child{grid-column:span 2}.fjc-footer{padding:55px 0}}

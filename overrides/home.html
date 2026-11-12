@@ -1,0 +1,78 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="fjc-home">
+  <!-- ACCUEIL / HERO : remplacez le visuel graphique par une photo officielle lorsque disponible. -->
+  <section class="fjc-hero" aria-labelledby="fjc-hero-title">
+    <div class="fjc-hero__mesh" aria-hidden="true"></div>
+    <div class="fjc-hero__ball" aria-hidden="true"><span></span></div>
+    <div class="fjc-shell fjc-hero__layout">
+      <div class="fjc-hero__copy" data-fjc-reveal>
+        <div class="fjc-kicker"><span class="fjc-dot"></span> BIENVENUE AU FJC HANDBALL</div>
+        <h1 id="fjc-hero-title">PLUS QU'UN CLUB.<br><em>UNE PASSION.</em></h1>
+        <p>Un même maillot, un même esprit d'équipe et le plaisir de jouer ensemble. Bienvenue au FJC Handball.</p>
+        <div class="fjc-hero__buttons">
+          <a class="fjc-button fjc-button--red" href="{{ 'equipes/' | url }}">DÉCOUVRIR LES ÉQUIPES <span aria-hidden="true">↗</span></a>
+          <a class="fjc-button fjc-button--border" href="{{ 'contact/' | url }}">CONTACTER LE CLUB <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="fjc-hero__aside" aria-hidden="true">
+        <div class="fjc-hero__watermark">FJC</div>
+        <div class="fjc-hero__vertical">PASSION • RESPECT • COLLECTIF</div>
+      </div>
+    </div>
+    <a class="fjc-scroll-cue" href="#nos-equipes">DÉFILER <span aria-hidden="true">↓</span></a>
+    <div class="fjc-hero__sidecaption" aria-hidden="true">LE HANDBALL NOUS RASSEMBLE</div>
+  </section>
+
+  <div class="fjc-stripe" aria-label="Valeurs du club">
+    <div class="fjc-shell fjc-stripe__inner"><span>ESPRIT D'ÉQUIPE</span><span aria-hidden="true">✳</span><span>PASSION</span><span aria-hidden="true">✳</span><span>RESPECT</span><span aria-hidden="true">✳</span><span>ENGAGEMENT</span></div>
+  </div>
+
+  <section id="nos-equipes" class="fjc-section fjc-section--light" aria-labelledby="fjc-teams-title">
+    <div class="fjc-shell">
+      <div class="fjc-section__head" data-fjc-reveal>
+        <div><p class="fjc-eyebrow">01 — LE COLLECTIF</p><h2 id="fjc-teams-title">DÉCOUVREZ <span>NOS ÉQUIPES</span></h2><p class="fjc-lead">Du plaisir de la découverte à l'envie de compétition, chacun peut trouver sa place au sein du club.</p></div>
+        <div class="fjc-arrows"><button type="button" aria-label="Défiler les équipes vers la gauche" data-carousel-prev>←</button><button type="button" aria-label="Défiler les équipes vers la droite" data-carousel-next>→</button></div>
+      </div>
+      <div class="fjc-team-track" data-fjc-carousel>
+        <a href="{{ 'equipes/' | url }}" class="fjc-team-card fjc-team-card--one" data-fjc-reveal><span class="fjc-team-card__index">01 / DÉCOUVERTE</span><div class="fjc-team-card__art" aria-hidden="true"><span>01</span></div><div class="fjc-team-card__base"><h3>ÉCOLE DE HAND</h3><span>EXPLORER ↗</span></div></a>
+        <a href="{{ 'equipes/' | url }}" class="fjc-team-card fjc-team-card--two" data-fjc-reveal><span class="fjc-team-card__index">02 / FORMATION</span><div class="fjc-team-card__art" aria-hidden="true"><span>02</span></div><div class="fjc-team-card__base"><h3>ÉQUIPES JEUNES</h3><span>EXPLORER ↗</span></div></a>
+        <a href="{{ 'equipes/' | url }}" class="fjc-team-card fjc-team-card--three" data-fjc-reveal><span class="fjc-team-card__index">03 / COMPÉTITION</span><div class="fjc-team-card__art" aria-hidden="true"><span>03</span></div><div class="fjc-team-card__base"><h3>SENIORS</h3><span>EXPLORER ↗</span></div></a>
+        <a href="{{ 'equipes/' | url }}" class="fjc-team-card fjc-team-card--four" data-fjc-reveal><span class="fjc-team-card__index">04 / PARTAGE</span><div class="fjc-team-card__art" aria-hidden="true"><span>04</span></div><div class="fjc-team-card__base"><h3>LOISIRS</h3><span>EXPLORER ↗</span></div></a>
+      </div>
+      <div class="fjc-centered-action"><a class="fjc-text-link" href="{{ 'equipes/' | url }}">TOUTES LES ÉQUIPES <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="fjc-section fjc-section--muted" aria-labelledby="fjc-news-title">
+    <div class="fjc-shell">
+      <div class="fjc-section__head" data-fjc-reveal><div><p class="fjc-eyebrow">02 — L'ACTUALITÉ DU CLUB</p><h2 id="fjc-news-title">À LA <span>UNE</span></h2></div><a class="fjc-text-link" href="{{ 'actualites/' | url }}">TOUTES LES ACTUALITÉS <span aria-hidden="true">↗</span></a></div>
+      <div class="fjc-news-grid">
+        <a href="{{ 'actualites/' | url }}" class="fjc-news-card fjc-news-card--featured" data-fjc-reveal><div class="fjc-news-card__visual fjc-news-card__visual--red"><span>FJC / NEWS</span></div><div class="fjc-news-card__content"><span class="fjc-tag">VIE DU CLUB</span><h3>Les dernières nouvelles du FJC Handball</h3><p>Retrouvez prochainement les informations et temps forts de la vie du club.</p><span class="fjc-readmore">LIRE L'ARTICLE ↗</span></div></a>
+        <a href="{{ 'actualites/' | url }}" class="fjc-news-card" data-fjc-reveal><div class="fjc-news-card__visual fjc-news-card__visual--black"><span>COLLECTIF</span></div><div class="fjc-news-card__content"><span class="fjc-tag">INFORMATIONS</span><h3>Inscriptions et vie associative</h3><p>Les modalités et les annonces seront ajoutées ici.</p><span class="fjc-readmore">EN SAVOIR PLUS ↗</span></div></a>
+        <a href="{{ 'calendrier/' | url }}" class="fjc-news-card" data-fjc-reveal><div class="fjc-news-card__visual fjc-news-card__visual--light"><span>SAISON</span></div><div class="fjc-news-card__content"><span class="fjc-tag">CALENDRIER</span><h3>Les prochains rendez-vous</h3><p>Matchs, événements et temps forts à retrouver bientôt.</p><span class="fjc-readmore">VOIR LE CALENDRIER ↗</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fjc-section fjc-gallery" aria-labelledby="fjc-gallery-title">
+    <div class="fjc-shell">
+      <div class="fjc-section__head" data-fjc-reveal><div><p class="fjc-eyebrow">03 — NOS MOMENTS FORTS</p><h2 id="fjc-gallery-title">ALBUMS <span>PHOTOS</span></h2><p class="fjc-lead">Les sourires, les matchs et toute l'énergie du club en images.</p></div><a href="{{ 'galerie/' | url }}" class="fjc-text-link fjc-text-link--light">VOIR LES ALBUMS ↗</a></div>
+      <div class="fjc-gallery-grid">
+        <a href="{{ 'galerie/' | url }}" class="fjc-gallery-tile fjc-gallery-tile--a" data-fjc-reveal><span class="fjc-gallery-tile__ghost">FJC</span><span class="fjc-gallery-tile__caption">LES MATCHS <b>↗</b></span></a>
+        <a href="{{ 'galerie/' | url }}" class="fjc-gallery-tile fjc-gallery-tile--b" data-fjc-reveal><span class="fjc-gallery-tile__ghost">HB</span><span class="fjc-gallery-tile__caption">LA VIE DU CLUB <b>↗</b></span></a>
+        <a href="{{ 'galerie/' | url }}" class="fjc-gallery-tile fjc-gallery-tile--c" data-fjc-reveal><span class="fjc-gallery-tile__ghost">24/7</span><span class="fjc-gallery-tile__caption">LES ÉVÉNEMENTS <b>↗</b></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fjc-join" aria-labelledby="fjc-join-title">
+    <div class="fjc-shell fjc-join__inner" data-fjc-reveal><div><p>REJOINDRE L'AVENTURE</p><h2 id="fjc-join-title">ENVIE DE VIVRE <em>LE HANDBALL</em> AVEC NOUS ?</h2></div><a class="fjc-button fjc-button--white" href="{{ 'contact/' | url }}">PRENDRE CONTACT <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="fjc-section fjc-partners" aria-labelledby="fjc-partners-title"><div class="fjc-shell"><div class="fjc-section__head"><div><p class="fjc-eyebrow">04 — À NOS CÔTÉS</p><h2 id="fjc-partners-title">NOS <span>PARTENAIRES</span></h2></div><a href="{{ 'partenaires/' | url }}" class="fjc-text-link">DEVENIR PARTENAIRE ↗</a></div><div class="fjc-partners__placeholders"><div>VOTRE LOGO</div><div>VOTRE LOGO</div><div>VOTRE LOGO</div><div>VOTRE LOGO</div></div></div></section>
+
+  <footer class="fjc-footer"><div class="fjc-shell fjc-footer__grid"><div><div class="fjc-footer__brand">FJC <span>HANDBALL</span></div><p>Passion, collectif, engagement.<br>Ensemble, faisons vivre le handball.</p></div><div><h3>ACCÈS RAPIDES</h3><a href="{{ 'club/' | url }}">Le club</a><a href="{{ 'equipes/' | url }}">Les équipes</a><a href="{{ 'actualites/' | url }}">Actualités</a></div><div><h3>INFORMATIONS</h3><a href="{{ 'calendrier/' | url }}">Calendrier</a><a href="{{ 'galerie/' | url }}">Albums photos</a><a href="{{ 'contact/' | url }}">Contact</a></div><div><h3>RESTONS EN CONTACT</h3><p>Site officiel :<br><strong>fjchandball.fr</strong></p></div></div></footer>
+</div>
+{% endblock %}

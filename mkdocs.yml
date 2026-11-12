@@ -1,0 +1,51 @@
+site_name: FJC Handball
+site_url: https://fjchandball.fr/
+site_description: Site du FJC Handball — actualités, équipes, événements et vie du club.
+site_author: FJC Handball
+copyright: "© FJC Handball — Tous droits réservés"
+
+# Pour changer le logo, remplacez docs/assets/fjc-mark.svg par le logo officiel du club.
+theme:
+  name: material
+  custom_dir: overrides
+  language: fr
+  logo: assets/fjc-logo.png
+  favicon: assets/fjc-logo.png
+  palette:
+    scheme: default
+    primary: red
+    accent: red
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.sections
+    - search.highlight
+
+nav:
+  - Accueil: index.md
+  - Le club: club.md
+  - Les équipes: equipes.md
+  - Actualités: actualites.md
+  - Calendrier: calendrier.md
+  - Albums photos: galerie.md
+  - Partenaires: partenaires.md
+  - Contact: contact.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra_css:
+  - assets/stylesheets/fjc.css
+extra_javascript:
+  - assets/javascripts/fjc.js
+
+plugins:
+  - search:
+      lang: fr

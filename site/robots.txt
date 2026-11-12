@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fjchandball.fr/sitemap.xml

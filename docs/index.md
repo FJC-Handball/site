@@ -1,7 +1,11 @@
 ---
 template: home.html
-title: Accueil
-description: Bienvenue au FJC Handball. Découvrez le club, les équipes, les actualités et les albums photos.
+title: Accueil - Club du Foyer Des Jeunes de Champhol Handball
+description: >-
+  Bienvenue sur le site officiel du FJC Handball.
+  Découvrez les équipes, les matchs,
+  les entraînements et toutes les
+  informations pour rejoindre notre club.
 hide:
   - navigation
   - toc

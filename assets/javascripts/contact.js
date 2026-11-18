@@ -7,7 +7,7 @@ document.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Adresse e-mail du club
-  const destinataire = "contact.fjchandball.fr";
+  const destinataire = "contact@fjchandball.fr";
 
   const nom = form.elements["nom"].value.trim();
   const email = form.elements["email"].value.trim();

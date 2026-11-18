@@ -6,9 +6,7 @@ Vous souhaitez obtenir des informations sur le FJC Handball, les inscriptions ou
 
 Une question ? Envoyez-nous un message !
 
-<form
-  id="fjc-contact-form"
-  class="fjc-contact-form">
+<form id="fjc-contact-form" class="fjc-contact-form">
 
   <label for="contact-name">Nom et prénom *</label>
   <input
@@ -16,6 +14,7 @@ Une question ? Envoyez-nous un message !
     id="contact-name"
     name="nom"
     placeholder="Votre nom"
+    autocomplete="name"
     required>
 
   <label for="contact-email">Adresse e-mail *</label>
@@ -24,10 +23,14 @@ Une question ? Envoyez-nous un message !
     id="contact-email"
     name="email"
     placeholder="exemple@email.fr"
+    autocomplete="email"
     required>
 
   <label for="contact-subject">Sujet *</label>
-  <select id="contact-subject" name="sujet" required>
+  <select
+    id="contact-subject"
+    name="sujet"
+    required>
     <option value="">Choisissez un sujet</option>
     <option value="Inscription">Inscription</option>
     <option value="Renseignements">Renseignements</option>
@@ -44,16 +47,18 @@ Une question ? Envoyez-nous un message !
     required></textarea>
 
   <p class="fjc-contact-info">
-    Les informations seront utilisées pour
-    répondre à votre demande.
+    Les informations seront utilisées uniquement
+    pour répondre à votre demande.
   </p>
 
-  <button type="submit"
+  <button
+    type="submit"
     class="md-button md-button--primary">
     Préparer mon e-mail
   </button>
 
 </form>
+
 
 ## Nous rencontrer
 
@@ -63,7 +68,7 @@ Une question ? Envoyez-nous un message !
 
 [FFHB](https://monclub.ffhandball.fr/clubs/foyer-des-jeunes-de-champhol-handball/)
 
-[Instagram FJC](https://www.instagram.com/fjchamphol_handball/)
+[Instagram](https://www.instagram.com/fjchamphol_handball/)
 
 [Facebook](https://www.facebook.com/p/FJChamphol-Handball-61581799652987/?locale=fr_FR)
 

@@ -794,9 +794,7 @@
 <p>Vous souhaitez obtenir des informations sur le FJC Handball, les inscriptions ou un partenariat ?</p>
 <h2 id="ecrire-au-club">Écrire au club<a class="headerlink" href="#ecrire-au-club" title="Permanent link">&para;</a></h2>
 <p>Une question ? Envoyez-nous un message !</p>
-<p><form
-  id="fjc-contact-form"
-  class="fjc-contact-form">
+<form id="fjc-contact-form" class="fjc-contact-form">
 
   <label for="contact-name">Nom et prénom *</label>
   <input
@@ -804,6 +802,7 @@
     id="contact-name"
     name="nom"
     placeholder="Votre nom"
+    autocomplete="name"
     required>
 
   <label for="contact-email">Adresse e-mail *</label>
@@ -812,10 +811,14 @@
     id="contact-email"
     name="email"
     placeholder="exemple@email.fr"
+    autocomplete="email"
     required>
 
   <label for="contact-subject">Sujet *</label>
-  <select id="contact-subject" name="sujet" required>
+  <select
+    id="contact-subject"
+    name="sujet"
+    required>
     <option value="">Choisissez un sujet</option>
     <option value="Inscription">Inscription</option>
     <option value="Renseignements">Renseignements</option>
@@ -832,22 +835,23 @@
     required></textarea>
 
   <p class="fjc-contact-info">
-    Les informations seront utilisées pour
-    répondre à votre demande.
+    Les informations seront utilisées uniquement
+    pour répondre à votre demande.
   </p>
 
-  <button type="submit"
+  <button
+    type="submit"
     class="md-button md-button--primary">
     Préparer mon e-mail
   </button>
 
 </form>
-</p>
+
 <h2 id="nous-rencontrer">Nous rencontrer<a class="headerlink" href="#nous-rencontrer" title="Permanent link">&para;</a></h2>
 <p><em>Adresse et horaires officiels à renseigner.</em></p>
 <h2 id="reseaux-sociaux">Réseaux sociaux<a class="headerlink" href="#reseaux-sociaux" title="Permanent link">&para;</a></h2>
 <p><a href="https://monclub.ffhandball.fr/clubs/foyer-des-jeunes-de-champhol-handball/">FFHB</a></p>
-<p><a href="https://www.instagram.com/fjchamphol_handball/">Instagram FJC</a></p>
+<p><a href="https://www.instagram.com/fjchamphol_handball/">Instagram</a></p>
 <p><a href="https://www.facebook.com/p/FJChamphol-Handball-61581799652987/?locale=fr_FR">Facebook</a></p>
 <h2 id="lieu-du-gymnase">Lieu du gymnase<a class="headerlink" href="#lieu-du-gymnase" title="Permanent link">&para;</a></h2>
 <p><strong>Halle des Sports de Champhol</strong></p>

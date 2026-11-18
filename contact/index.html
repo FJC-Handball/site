@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/fjc.css">
     
+      <link rel="stylesheet" href="../assets/stylesheets/mode-sombre.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,6 +67,8 @@
   
   
     
+    
+      
     
     
     
@@ -121,7 +125,33 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Activer le mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Activer le mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Activer le mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Activer le mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -654,6 +684,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lieu-du-gymnase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lieu du gymnase
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -721,6 +762,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lieu-du-gymnase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lieu du gymnase
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -740,16 +792,85 @@
 
 <h1 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h1>
 <p>Vous souhaitez obtenir des informations sur le FJC Handball, les inscriptions ou un partenariat ?</p>
-<div class="fjc-contact-note">
-  <strong>Formulaire à activer :</strong> cette version de démonstration ne recueille aucune donnée personnelle. Nous connecterons le formulaire à un service adapté (par exemple Formspree) lorsque vous aurez choisi l'adresse de réception et validé la politique de confidentialité.
-</div>
-
 <h2 id="ecrire-au-club">Écrire au club<a class="headerlink" href="#ecrire-au-club" title="Permanent link">&para;</a></h2>
-<p><em>Adresse e-mail officielle à renseigner.</em></p>
+<p>Une question ? Envoyez-nous un message !</p>
+<p><form
+  id="fjc-contact-form"
+  class="fjc-contact-form">
+
+  <label for="contact-name">Nom et prénom *</label>
+  <input
+    type="text"
+    id="contact-name"
+    name="nom"
+    placeholder="Votre nom"
+    required>
+
+  <label for="contact-email">Adresse e-mail *</label>
+  <input
+    type="email"
+    id="contact-email"
+    name="email"
+    placeholder="exemple@email.fr"
+    required>
+
+  <label for="contact-subject">Sujet *</label>
+  <select id="contact-subject" name="sujet" required>
+    <option value="">Choisissez un sujet</option>
+    <option value="Inscription">Inscription</option>
+    <option value="Renseignements">Renseignements</option>
+    <option value="Partenariat">Partenariat</option>
+    <option value="Autre">Autre demande</option>
+  </select>
+
+  <label for="contact-message">Message *</label>
+  <textarea
+    id="contact-message"
+    name="message"
+    rows="6"
+    placeholder="Votre message..."
+    required></textarea>
+
+  <p class="fjc-contact-info">
+    Les informations seront utilisées pour
+    répondre à votre demande.
+  </p>
+
+  <button type="submit"
+    class="md-button md-button--primary">
+    Préparer mon e-mail
+  </button>
+
+</form>
+</p>
 <h2 id="nous-rencontrer">Nous rencontrer<a class="headerlink" href="#nous-rencontrer" title="Permanent link">&para;</a></h2>
 <p><em>Adresse et horaires officiels à renseigner.</em></p>
 <h2 id="reseaux-sociaux">Réseaux sociaux<a class="headerlink" href="#reseaux-sociaux" title="Permanent link">&para;</a></h2>
-<p><em>Liens officiels à renseigner.</em></p>
+<p><a href="https://monclub.ffhandball.fr/clubs/foyer-des-jeunes-de-champhol-handball/">FFHB</a></p>
+<p><a href="https://www.instagram.com/fjchamphol_handball/">Instagram FJC</a></p>
+<p><a href="https://www.facebook.com/p/FJChamphol-Handball-61581799652987/?locale=fr_FR">Facebook</a></p>
+<h2 id="lieu-du-gymnase">Lieu du gymnase<a class="headerlink" href="#lieu-du-gymnase" title="Permanent link">&para;</a></h2>
+<p><strong>Halle des Sports de Champhol</strong></p>
+<p>7 rue Louis Blériot, 28300 CHAMPHOL</p>
+<p><iframe
+  src="https://maps.google.com/maps?q=7%20Rue%20Louis%20Bleriot%2C%2028300%20Champhol%2C%20France&amp;z=16&amp;output=embed"
+  width="100%"
+  height="400"
+  style="border:0; border-radius:12px;"
+  allowfullscreen
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="Localisation du gymnase FJC Handball">
+</iframe>
+</p>
+<p>
+  <a
+    href="https://www.google.com/maps/search/?api=1&amp;query=7%20Rue%20Louis%20Bleriot%2C%2028300%20Champhol"
+    target="_blank"
+    rel="noopener noreferrer">
+    📍 Ouvrir dans Google Maps
+  </a>
+</p>
 
 
 
@@ -815,6 +936,8 @@
       <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../assets/javascripts/fjc.js"></script>
+      
+        <script src="../assets/javascripts/contact.js"></script>
       
     
   </body>

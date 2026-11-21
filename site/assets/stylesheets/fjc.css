@@ -10,7 +10,23 @@
 .md-main__inner{min-height:60vh}
 .md-typeset h1,.md-typeset h2{font-weight:850}
 /* L'accueil occupe toute la largeur, sans colonnes de documentation. */
-body:has(.fjc-home) .md-sidebar,body:has(.fjc-home) .md-header__source{display:none}
+
+/* Accueil : conserver le menu mobile */
+
+/* Masquer uniquement les éléments inutiles */
+body:has(.fjc-home) .md-header__source,
+body:has(.fjc-home) .md-sidebar--secondary {
+  display: none;
+}
+
+/* Masquer le menu latéral sur ordinateur uniquement */
+@media screen and (min-width: 76.25em) {
+  body:has(.fjc-home) .md-sidebar--primary {
+    display: none;
+  }
+}
+
+
 body:has(.fjc-home) .md-main__inner,body:has(.fjc-home) .md-content,body:has(.fjc-home) .md-content__inner{max-width:none!important;width:100%;margin:0;padding:0}
 body:has(.fjc-home) .md-content__inner::before{display:none}
 body:has(.fjc-home) .md-main__inner{display:block}

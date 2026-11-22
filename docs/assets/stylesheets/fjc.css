@@ -1,210 +1,1435 @@
+/*
+ * FJC HANDBALL — CSS EXPLIQUÉ
+ * -----------------------------------------------
+ * Chaque règle est précédée d’un commentaire sur son rôle.
+ * Chaque propriété possède aussi un commentaire expliquant son effet.
+ * Les valeurs, sélecteurs, priorités et règles responsive sont conservés.
+ * Aide à la lecture :
+ *   .classe      = élément HTML portant cette classe ;
+ *   :hover       = état au passage de la souris ;
+ *   ::before     = élément graphique généré avant le contenu ;
+ *   @media       = styles conditionnels à l’écran ou aux préférences ;
+ *   var(--nom)   = réutilisation d’une variable CSS ;
+ *   !important   = renforce la priorité d’une déclaration.
+ */
+
 /* FJC Handball — thème Material personnalisé. Modifiez les trois couleurs ci-dessous. */
-:root{--fjc-red:#d7192e;--fjc-black:#101115;--fjc-white:#ffffff;--fjc-grey:#f3f3f4;--fjc-shell:1180px}
-[data-md-color-scheme="default"]{--md-primary-fg-color:#111216;--md-primary-bg-color:#ffffff;--md-accent-fg-color:#d7192e;--md-typeset-a-color:#c91529}
-.md-header{background:#0f1013!important;box-shadow:none;border-bottom:1px solid rgba(255,255,255,.09)}
-.md-header__title{font-weight:800;letter-spacing:.04em}
-.md-tabs{background:#b80c23!important}
-.md-tabs__link{font-weight:800;letter-spacing:.035em;opacity:.78}
-.md-tabs__link--active,.md-tabs__link:hover{opacity:1}
-.md-content a:hover{color:#a60a1b}
-.md-main__inner{min-height:60vh}
-.md-typeset h1,.md-typeset h2{font-weight:850}
+
+/* Déclare les couleurs de marque et la largeur de référence, réutilisées dans toute la feuille. */
+:root {
+  --fjc-red: #d7192e;  /* Déclare le rouge de référence du club ; utilisé via var(--fjc-red). */
+  --fjc-black: #101115;  /* Déclare le noir de référence réutilisable du club. */
+  --fjc-white: #ffffff;  /* Déclare le blanc de référence réutilisable du club. */
+  --fjc-grey: #f3f3f4;  /* Déclare le gris clair de référence réutilisable du club. */
+  --fjc-shell: 1180px;  /* Définit la largeur maximale de la colonne centrale du site. */
+}
+
+/* Personnalise les couleurs du thème clair de Material for MkDocs. */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #111216;  /* Remplace la couleur principale de premier plan du thème Material. */
+  --md-primary-bg-color: #ffffff;  /* Définit la couleur de fond associée à la couleur principale du thème. */
+  --md-accent-fg-color: #d7192e;  /* Définit la couleur d’accent du thème (éléments actifs, boutons, etc.). */
+  --md-typeset-a-color: #c91529;  /* Définit la couleur par défaut des liens dans les textes Material. */
+}
+
+/* Applique un en-tête sombre, sans ombre, avec une séparation discrète. */
+.md-header {
+  background: #0f1013 !important;  /* Définit la couleur d’arrière-plan. */
+  box-shadow: none;  /* Ajoute une ombre visuelle ; « none » la désactive. */
+  border-bottom: 1px solid rgba(255,255,255,.09);  /* Définit la bordure correspondante de cet élément. */
+}
+
+/* Rend le titre de l’en-tête plus gras et légèrement espacé. */
+.md-header__title {
+  font-weight: 800;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: .04em;  /* Augmente ou resserre l’espace entre les lettres. */
+}
+
+/* Colore en rouge foncé la barre des onglets de navigation. */
+.md-tabs {
+  background: #b80c23 !important;  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Uniformise la typographie et atténue les onglets inactifs. */
+.md-tabs__link {
+  font-weight: 800;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: .035em;  /* Augmente ou resserre l’espace entre les lettres. */
+  opacity: .78;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+}
+
+/* Met en évidence l’onglet actif ou survolé. */
+.md-tabs__link--active,.md-tabs__link:hover {
+  opacity: 1;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+}
+
+/* Change la couleur des liens du contenu au passage de la souris. */
+.md-content a:hover {
+  color: #a60a1b;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Évite que la zone de contenu principal soit trop courte. */
+.md-main__inner {
+  min-height: 60vh;  /* Fixe la hauteur minimale à 60vh. */
+}
+
+/* Donne davantage de poids aux titres des pages Material. */
+.md-typeset h1,.md-typeset h2 {
+  font-weight: 850;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+}
+
 /* L'accueil occupe toute la largeur, sans colonnes de documentation. */
 
 /* Accueil : conserver le menu mobile */
 
 /* Masquer uniquement les éléments inutiles */
+
+/* Cache sur l’accueil le lien de dépôt et la barre latérale secondaire, mais pas le menu mobile. */
 body:has(.fjc-home) .md-header__source,
 body:has(.fjc-home) .md-sidebar--secondary {
-  display: none;
+  display: none;  /* Masque complètement cet élément sans lui réserver de place. */
 }
 
 /* Masquer le menu latéral sur ordinateur uniquement */
+
+/* N’applique ces styles que sur grand écran (largeur minimale de 76,25 em). Le menu mobile reste accessible. */
+
 @media screen and (min-width: 76.25em) {
+
+  /* Sur grand écran : cache la navigation latérale principale de l’accueil sur grand écran seulement. */
   body:has(.fjc-home) .md-sidebar--primary {
-    display: none;
+    display: none;  /* Masque complètement cet élément sans lui réserver de place. */
   }
+
 }
 
+/* Étend la page d’accueil à toute la largeur, sans marges ni espacements Material par défaut. */
+body:has(.fjc-home) .md-main__inner,body:has(.fjc-home) .md-content,body:has(.fjc-home) .md-content__inner {
+  max-width: none !important;  /* Limite la largeur maximale à none. */
+  width: 100%;  /* Définit la largeur à 100%. */
+  margin: 0;  /* Règle les marges extérieures (0). */
+  padding: 0;  /* Règle les marges intérieures (0). */
+}
 
-body:has(.fjc-home) .md-main__inner,body:has(.fjc-home) .md-content,body:has(.fjc-home) .md-content__inner{max-width:none!important;width:100%;margin:0;padding:0}
-body:has(.fjc-home) .md-content__inner::before{display:none}
-body:has(.fjc-home) .md-main__inner{display:block}
-body:has(.fjc-home) .md-main{overflow:hidden}
-body:has(.fjc-home) .md-footer{display:none}
-.fjc-home{color:#141418;line-height:1.45;font-size:16px;overflow:hidden;font-family:Roboto,Arial,sans-serif}
-.fjc-home *{box-sizing:border-box}
-.fjc-home a{text-decoration:none;transition:color .25s,background-color .25s,transform .25s,box-shadow .25s}
-.fjc-home h1,.fjc-home h2,.fjc-home h3,.fjc-home p{margin:0}
-.fjc-home h1,.fjc-home h2,.fjc-home h3{font-family:Roboto,"Arial Narrow",Arial,sans-serif;letter-spacing:-.035em;line-height:1.02}
-.fjc-shell{max-width:var(--fjc-shell);width:calc(100% - 64px);margin:0 auto}
-.fjc-hero{min-height:640px;position:relative;display:flex;align-items:center;overflow:hidden;color:#fff;background:radial-gradient(circle at 79% 41%,#3b2227 0,#17151a 26%,#0c0d11 67%),linear-gradient(135deg,#19191c,#08090b)}
-.fjc-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,#09090c 10%,rgba(9,9,12,.95) 39%,transparent 75%),repeating-linear-gradient(125deg,transparent 0,transparent 135px,rgba(255,255,255,.018) 136px,rgba(255,255,255,.018) 138px);z-index:1}
-.fjc-hero::after{content:"";position:absolute;width:370px;height:950px;background:linear-gradient(180deg,rgba(231,24,48,.93),rgba(114,8,24,.72));transform:rotate(25deg);right:10%;top:-160px;opacity:.87}
-.fjc-hero__mesh{position:absolute;inset:0;background:radial-gradient(circle at 75% 32%,rgba(255,255,255,.13),transparent 33%),linear-gradient(125deg,transparent 36%,rgba(215,25,46,.18) 50%,transparent 66%);z-index:2;pointer-events:none}
-.fjc-hero__layout{display:flex;position:relative;z-index:4;align-items:center;min-height:640px}
-.fjc-hero__copy{max-width:760px;padding:90px 0 108px;position:relative;z-index:3}
-.fjc-kicker{font-size:12px;letter-spacing:.23em;font-weight:900;margin-bottom:25px;display:flex;align-items:center;gap:12px;color:#f1f1f1}
-.fjc-dot{display:inline-block;width:8px;height:8px;background:var(--fjc-red);border-radius:50%;box-shadow:0 0 0 5px rgba(215,25,46,.2)}
-.fjc-home .fjc-hero h1{font-size:clamp(43px,6.3vw,92px);font-weight:950;line-height:.96;letter-spacing:-.055em;color:#fff;max-width:800px}
-.fjc-hero h1 em{font-style:normal;color:#ed2540}
-.fjc-home .fjc-hero__copy p{font-size:17px;line-height:1.75;color:#cccbd0;max-width:550px;margin:27px 0 30px}
-.fjc-hero__buttons{display:flex;flex-wrap:wrap;gap:12px}
-.fjc-button{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;padding:18px 22px;font-weight:900;font-size:12px;letter-spacing:.07em;min-height:52px;line-height:1.1;border:2px solid transparent}
-.fjc-home .fjc-button:hover{transform:translateY(-3px);color:inherit}
-.fjc-button span{font-size:21px;line-height:.6}
-.fjc-button--red{background:var(--fjc-red);color:#fff!important;border-color:var(--fjc-red)}
-.fjc-button--red:hover{background:#f01d35}
-.fjc-button--border{border-color:rgba(255,255,255,.5);color:#fff!important;background:rgba(0,0,0,.1)}
-.fjc-button--border:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-.fjc-button--white{background:#fff;color:#121212!important}
-.fjc-hero__aside{position:absolute;inset:0;pointer-events:none}
-.fjc-hero__watermark{font-size:min(31vw,460px);font-weight:1000;position:absolute;right:-13%;bottom:-14%;line-height:1;color:rgba(255,255,255,.075);letter-spacing:-.09em;transform:rotate(-10deg);font-style:italic;user-select:none}
-.fjc-hero__vertical{position:absolute;right:0;top:42%;writing-mode:vertical-rl;font-weight:900;font-size:10px;letter-spacing:.32em;opacity:.7}
-.fjc-scroll-cue{position:absolute;left:max(32px,calc((100vw - var(--fjc-shell))/2));bottom:28px;color:#fff!important;font-weight:900;font-size:11px;letter-spacing:.15em;z-index:4;display:flex;align-items:center;gap:17px}
-.fjc-scroll-cue span{font-size:20px;color:#f1243e}
-.fjc-hero__sidecaption{display:none}
-.fjc-stripe{background:var(--fjc-red);color:#fff;min-height:58px;display:flex;align-items:center}
-.fjc-stripe__inner{display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:11px;letter-spacing:.15em;font-weight:900}
-.fjc-stripe__inner span:nth-child(even){font-size:18px;color:rgba(255,255,255,.65)}
-.fjc-section{padding:90px 0 95px}
-.fjc-section--light{background:#fff}
-.fjc-section--muted{background:#f2f2f3}
-.fjc-section__head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:34px}
-.fjc-eyebrow{color:var(--fjc-red);font-size:11px;font-weight:950;letter-spacing:.2em;margin-bottom:15px!important}
-.fjc-home .fjc-section h2{font-size:clamp(35px,4.3vw,58px);font-weight:950;color:#15151a}
-.fjc-home h2 span{color:var(--fjc-red)}
-.fjc-home .fjc-lead{max-width:580px;color:#64646e;font-size:15px;line-height:1.8;margin-top:14px}
-.fjc-arrows{display:flex;gap:8px}
-.fjc-arrows button{height:45px;width:45px;border:1px solid #d3d3d6;background:#fff;cursor:pointer;font-size:21px;font-weight:700;transition:.2s}
-.fjc-arrows button:hover{background:var(--fjc-red);color:#fff;border-color:var(--fjc-red)}
-.fjc-team-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 42px)/3);gap:21px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 0 7px;scroll-behavior:smooth}
-.fjc-team-track::-webkit-scrollbar{display:none}
-.fjc-team-card{height:384px;position:relative;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;overflow:hidden;padding:25px;color:#fff!important;background:#1a1a22;scroll-snap-align:start}
-.fjc-team-card::before{content:"";position:absolute;inset:0;z-index:-2;transition:transform .5s ease;}
-.fjc-team-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.87),rgba(0,0,0,.18) 65%);z-index:-1}
-.fjc-team-card:hover::before{transform:scale(1.08)}
-.fjc-team-card--one::before{background:linear-gradient(130deg,#bb1024,#42131d 70%)}
-.fjc-team-card--two::before{background:linear-gradient(130deg,#41414c,#14151b 70%)}
-.fjc-team-card--three::before{background:linear-gradient(120deg,#c71f31,#200f16 75%)}
-.fjc-team-card--four::before{background:linear-gradient(120deg,#6c737b,#17181b 75%)}
-.fjc-team-card__index{letter-spacing:.16em;font-size:10px;font-weight:800;position:relative;z-index:1}
-.fjc-team-card__art{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;z-index:0}
-.fjc-team-card__art:before{content:"";width:240px;height:240px;border:34px solid rgba(255,255,255,.07);border-radius:50%;position:absolute;right:-70px;top:38px}
-.fjc-team-card__art span{font-weight:1000;font-size:180px;font-style:italic;opacity:.11;transform:rotate(-12deg)}
-.fjc-team-card__base{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
-.fjc-home .fjc-team-card h3{font-size:32px;line-height:1.0;font-weight:950;color:#fff}
-.fjc-team-card__base>span{font-size:11px;letter-spacing:.15em;font-weight:900;color:#f5a5ad}
-.fjc-centered-action{text-align:center;margin-top:27px}
-.fjc-text-link{color:#19191d!important;font-size:12px;font-weight:950;letter-spacing:.095em;white-space:nowrap;padding:11px 0;border-bottom:2px solid var(--fjc-red)}
-.fjc-text-link:hover{color:var(--fjc-red)!important}
-.fjc-text-link span{margin-left:15px}
-.fjc-news-grid{display:grid;grid-template-columns:1.24fr 1fr 1fr;gap:20px}
-.fjc-news-card{display:flex;flex-direction:column;background:#fff;color:#18191d!important;min-width:0;box-shadow:0 8px 30px rgba(0,0,0,.035)}
-.fjc-news-card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,0,0,.09)}
-.fjc-news-card__visual{height:188px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.fjc-news-card--featured .fjc-news-card__visual{height:225px}
-.fjc-news-card__visual::after{content:"";width:150px;height:150px;border:18px solid rgba(255,255,255,.07);border-radius:50%;position:absolute;right:-25px;bottom:-60px}
-.fjc-news-card__visual span{font-weight:1000;color:rgba(255,255,255,.17);font-size:42px;letter-spacing:-.08em;transform:rotate(-10deg)}
-.fjc-news-card__visual--red{background:linear-gradient(135deg,#ae1022,#ee263d)}
-.fjc-news-card__visual--black{background:linear-gradient(135deg,#1c1e24,#626571)}
-.fjc-news-card__visual--light{background:linear-gradient(135deg,#76111b,#d62b3c)}
-.fjc-news-card__content{padding:25px 24px 28px;display:flex;flex-direction:column;flex:1;align-items:start}
-.fjc-tag{background:#fae7e9;color:#b70d24;font-weight:900;font-size:10px;letter-spacing:.12em;padding:6px 8px}
-.fjc-home .fjc-news-card h3{margin-top:15px;font-size:24px;line-height:1.18;font-weight:900}
-.fjc-home .fjc-news-card p{font-size:13px;line-height:1.7;color:#68686e;margin-top:12px;margin-bottom:25px}
-.fjc-readmore{margin-top:auto;font-size:11px;letter-spacing:.09em;font-weight:900;color:#be172b}
-.fjc-gallery{color:#fff;background:#16171b}
-.fjc-gallery .fjc-section__head h2{color:#fff}
-.fjc-gallery .fjc-lead{color:#b5b4bc}
-.fjc-text-link--light{color:#fff!important}
-.fjc-gallery-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:18px}
-.fjc-gallery-tile{height:288px;position:relative;overflow:hidden;isolation:isolate;background:#202228;color:#fff!important}
-.fjc-gallery-tile::before{content:"";position:absolute;inset:0;z-index:-1;transition:transform .5s}
-.fjc-gallery-tile:hover::before{transform:scale(1.1)}
-.fjc-gallery-tile--a::before{background:linear-gradient(130deg,#c91c2c,#2c0b14 85%)}
-.fjc-gallery-tile--b::before{background:linear-gradient(135deg,#666874,#1a1b22 85%)}
-.fjc-gallery-tile--c::before{background:linear-gradient(135deg,#641622,#1a1c23 85%)}
-.fjc-gallery-tile__ghost{font-size:150px;letter-spacing:-.09em;font-weight:950;position:absolute;top:8px;right:0;color:rgba(255,255,255,.075);font-style:italic;line-height:1}
-.fjc-gallery-tile__caption{position:absolute;left:20px;right:20px;bottom:20px;font-size:19px;font-weight:950;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.3);padding-top:17px}
-.fjc-join{background:var(--fjc-red);color:#fff;position:relative;overflow:hidden}
-.fjc-join::before{content:"FJC";position:absolute;right:2%;bottom:-88px;font-weight:1000;font-size:310px;color:rgba(255,255,255,.07);font-style:italic;line-height:1;letter-spacing:-.11em}
-.fjc-join__inner{min-height:262px;display:flex;align-items:center;justify-content:space-between;gap:50px;position:relative}
-.fjc-join__inner p{font-size:11px;font-weight:950;letter-spacing:.2em;color:#ffe8ed;margin-bottom:11px}
-.fjc-home .fjc-join h2{font-size:clamp(28px,3.5vw,47px);color:#fff;max-width:700px;font-weight:950}
-.fjc-join h2 em{font-style:normal;color:#111117}
-.fjc-partners{background:#fff}
-.fjc-partners__placeholders{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.fjc-partners__placeholders div{height:110px;display:grid;place-items:center;background:#f2f2f3;border:1px dashed #c9c9cb;color:#97989d;font-size:12px;font-weight:900;letter-spacing:.13em}
-.fjc-footer{background:#0c0d10;color:#fff;padding:65px 0 62px}
-.fjc-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.1fr;gap:40px}
-.fjc-footer__brand{font-size:38px;line-height:1;font-weight:1000;letter-spacing:-.04em}
-.fjc-footer__brand span{color:var(--fjc-red);font-size:17px;letter-spacing:.07em}
-.fjc-home .fjc-footer p{font-size:13px;line-height:1.9;color:#a5a5ac;margin-top:15px}
-.fjc-footer h3{font-weight:950;font-size:12px;letter-spacing:.1em;color:#fff;margin-bottom:22px}
-.fjc-footer a{display:block;color:#adadb4;font-size:13px;margin:9px 0}
-.fjc-footer a:hover{color:#fff}
+/* Supprime l’élément décoratif inséré avant le contenu de l’accueil. */
+body:has(.fjc-home) .md-content__inner::before {
+  display: none;  /* Masque complètement cet élément sans lui réserver de place. */
+}
+
+/* Fait occuper à la structure principale toute sa ligne, au lieu de conserver sa mise en page habituelle. */
+body:has(.fjc-home) .md-main__inner {
+  display: block;  /* Place l’élément sur sa propre ligne en occupant l’espace disponible. */
+}
+
+/* Empêche les éléments décoratifs de l’accueil de déborder horizontalement. */
+body:has(.fjc-home) .md-main {
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+}
+
+/* Cache le pied de page automatique de Material sur l’accueil, remplacé par celui du club. */
+body:has(.fjc-home) .md-footer {
+  display: none;  /* Masque complètement cet élément sans lui réserver de place. */
+}
+
+/* Définit les caractéristiques globales du texte et du cadre de la page d’accueil. */
+.fjc-home {
+  color: #141418;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  line-height: 1.45;  /* Règle l’espace vertical entre les lignes de texte. */
+  font-size: 16px;  /* Fixe la taille du texte à 16px. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+  font-family: Roboto,Arial,sans-serif;  /* Choisit les polices à employer, dans l’ordre de préférence. */
+}
+
+/* Inclut bordures et marges internes dans les dimensions des éléments de l’accueil. */
+.fjc-home * {
+  box-sizing: border-box;  /* Inclut la bordure et le remplissage dans le calcul des tailles. */
+}
+
+/* Supprime le soulignement des liens et prépare des transitions au survol. */
+.fjc-home a {
+  text-decoration: none;  /* Retire ou ajoute les décorations du texte (ex. soulignement). */
+  transition: color .25s,background-color .25s,transform .25s,box-shadow .25s;  /* Anime progressivement les changements de style (durée et accélération). */
+}
+
+/* Retire les marges natives des titres et paragraphes de l’accueil. */
+.fjc-home h1,.fjc-home h2,.fjc-home h3,.fjc-home p {
+  margin: 0;  /* Règle les marges extérieures (0). */
+}
+
+/* Applique une typographie condensée et serrée aux titres de l’accueil. */
+.fjc-home h1,.fjc-home h2,.fjc-home h3 {
+  font-family: Roboto,"Arial Narrow",Arial,sans-serif;  /* Choisit les polices à employer, dans l’ordre de préférence. */
+  letter-spacing: -.035em;  /* Augmente ou resserre l’espace entre les lettres. */
+  line-height: 1.02;  /* Règle l’espace vertical entre les lignes de texte. */
+}
+
+/* Centre le contenu dans une largeur maximale commune à toutes les sections. */
+.fjc-shell {
+  max-width: var(--fjc-shell);  /* Limite la largeur maximale à var(--fjc-shell). */
+  width: calc(100% - 64px);  /* Définit la largeur à calc(100% - 64px). */
+  margin: 0 auto;  /* Supprime les marges verticales et centre horizontalement le bloc. */
+}
+
+/* Crée la grande bannière d’introduction sombre de la page d’accueil. */
+.fjc-hero {
+  min-height: 640px;  /* Fixe la hauteur minimale à 640px. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  background: radial-gradient(circle at 79% 41%,#3b2227 0,#17151a 26%,#0c0d11 67%),linear-gradient(135deg,#19191c,#08090b);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Superpose un voile sombre et de fines lignes en diagonale au fond de la bannière. */
+.fjc-hero::before {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  background: linear-gradient(105deg,#09090c 10%,rgba(9,9,12,.95) 39%,transparent 75%),repeating-linear-gradient(125deg,transparent 0,transparent 135px,rgba(255,255,255,.018) 136px,rgba(255,255,255,.018) 138px);  /* Dessine un dégradé de fond, sans fichier image. */
+  z-index: 1;  /* Détermine l’ordre d’empilement des éléments superposés. */
+}
+
+/* Dessine la grande bande rouge inclinée dans le fond de la bannière. */
+.fjc-hero::after {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  width: 370px;  /* Définit la largeur à 370px. */
+  height: 950px;  /* Définit la hauteur à 950px. */
+  background: linear-gradient(180deg,rgba(231,24,48,.93),rgba(114,8,24,.72));  /* Dessine un dégradé de fond, sans fichier image. */
+  transform: rotate(25deg);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+  right: 10%;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  top: -160px;  /* Fixe la distance par rapport au bord supérieur du conteneur de référence. */
+  opacity: .87;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+}
+
+/* Ajoute un jeu de lumières au fond sans bloquer les clics. */
+.fjc-hero__mesh {
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  background: radial-gradient(circle at 75% 32%,rgba(255,255,255,.13),transparent 33%),linear-gradient(125deg,transparent 36%,rgba(215,25,46,.18) 50%,transparent 66%);  /* Dessine un dégradé de fond, sans fichier image. */
+  z-index: 2;  /* Détermine l’ordre d’empilement des éléments superposés. */
+  pointer-events: none;  /* Évite que la décoration intercepte les clics de la souris. */
+}
+
+/* Place les éléments réels de la bannière devant les effets visuels. */
+.fjc-hero__layout {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  z-index: 4;  /* Détermine l’ordre d’empilement des éléments superposés. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  min-height: 640px;  /* Fixe la hauteur minimale à 640px. */
+}
+
+/* Dimensionne et place le texte principal de la bannière. */
+.fjc-hero__copy {
+  max-width: 760px;  /* Limite la largeur maximale à 760px. */
+  padding: 90px 0 108px;  /* Règle les marges intérieures (90px 0 108px). */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  z-index: 3;  /* Détermine l’ordre d’empilement des éléments superposés. */
+}
+
+/* Présente le petit libellé situé au-dessus du titre de bienvenue. */
+.fjc-kicker {
+  font-size: 12px;  /* Fixe la taille du texte à 12px. */
+  letter-spacing: .23em;  /* Augmente ou resserre l’espace entre les lettres. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  margin-bottom: 25px;  /* Règle l’espace extérieur en dessous (25px). */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  gap: 12px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  color: #f1f1f1;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Crée la petite pastille rouge décorative et son halo. */
+.fjc-dot {
+  display: inline-block;  /* Permet de fixer des dimensions tout en restant dans le flux du texte. */
+  width: 8px;  /* Définit la largeur à 8px. */
+  height: 8px;  /* Définit la hauteur à 8px. */
+  background: var(--fjc-red);  /* Applique au fond la couleur définie par une variable du thème. */
+  border-radius: 50%;  /* Arrondit l’élément en cercle lorsque largeur et hauteur sont égales. */
+  box-shadow: 0 0 0 5px rgba(215,25,46,.2);  /* Ajoute une ombre visuelle ; « none » la désactive. */
+}
+
+/* Met en forme le très grand titre d’accueil, avec taille adaptable à l’écran. */
+.fjc-home .fjc-hero h1 {
+  font-size: clamp(43px,6.3vw,92px);  /* Adapte la taille du texte à l’écran tout en respectant un minimum et un maximum. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  line-height: .96;  /* Règle l’espace vertical entre les lignes de texte. */
+  letter-spacing: -.055em;  /* Augmente ou resserre l’espace entre les lettres. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  max-width: 800px;  /* Limite la largeur maximale à 800px. */
+}
+
+/* Colorie en rouge le mot mis en emphase dans le titre principal. */
+.fjc-hero h1 em {
+  font-style: normal;  /* Active ou désactive le style italique. */
+  color: #ed2540;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Règle le paragraphe de présentation dans la bannière. */
+.fjc-home .fjc-hero__copy p {
+  font-size: 17px;  /* Fixe la taille du texte à 17px. */
+  line-height: 1.75;  /* Règle l’espace vertical entre les lignes de texte. */
+  color: #cccbd0;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  max-width: 550px;  /* Limite la largeur maximale à 550px. */
+  margin: 27px 0 30px;  /* Règle les marges extérieures (27px 0 30px). */
+}
+
+/* Aligne les boutons d’action de la bannière et permet leur retour à la ligne. */
+.fjc-hero__buttons {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  flex-wrap: wrap;  /* Autorise les éléments Flexbox à passer à la ligne suivante. */
+  gap: 12px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Définit les dimensions, espacements et typographie communs des boutons personnalisés. */
+.fjc-button {
+  display: inline-flex;  /* Crée un conteneur Flexbox qui conserve le comportement d’un élément en ligne. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  justify-content: space-between;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  gap: 26px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  padding: 18px 22px;  /* Règle les marges intérieures (18px 22px). */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 12px;  /* Fixe la taille du texte à 12px. */
+  letter-spacing: .07em;  /* Augmente ou resserre l’espace entre les lettres. */
+  min-height: 52px;  /* Fixe la hauteur minimale à 52px. */
+  line-height: 1.1;  /* Règle l’espace vertical entre les lignes de texte. */
+  border: 2px solid transparent;  /* Définit l’épaisseur, le style et la couleur du contour. */
+}
+
+/* Soulève légèrement les boutons au survol. */
+.fjc-home .fjc-button:hover {
+  transform: translateY(-3px);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+  color: inherit;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Agrandit la flèche ou l’icône portée par un bouton. */
+.fjc-button span {
+  font-size: 21px;  /* Fixe la taille du texte à 21px. */
+  line-height: .6;  /* Règle l’espace vertical entre les lignes de texte. */
+}
+
+/* Crée le bouton principal à fond rouge et texte blanc. */
+.fjc-button--red {
+  background: var(--fjc-red);  /* Applique au fond la couleur définie par une variable du thème. */
+  color: #fff !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  border-color: var(--fjc-red);  /* Définit la couleur de l’ensemble des bordures. */
+}
+
+/* Éclaircit le bouton rouge au survol. */
+.fjc-button--red:hover {
+  background: #f01d35;  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Crée un bouton secondaire transparent avec contour clair. */
+.fjc-button--border {
+  border-color: rgba(255,255,255,.5);  /* Définit la couleur de l’ensemble des bordures. */
+  color: #fff !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  background: rgba(0,0,0,.1);  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Renforce le contour et le fond du bouton secondaire au survol. */
+.fjc-button--border:hover {
+  border-color: #fff;  /* Définit la couleur de l’ensemble des bordures. */
+  background: rgba(255,255,255,.08);  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Crée un bouton alternatif blanc à texte sombre. */
+.fjc-button--white {
+  background: #fff;  /* Définit la couleur d’arrière-plan. */
+  color: #121212 !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Positionne le conteneur de décorations sur toute la bannière sans intercepter les interactions. */
+.fjc-hero__aside {
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  pointer-events: none;  /* Évite que la décoration intercepte les clics de la souris. */
+}
+
+/* Affiche un énorme mot ou sigle transparent en filigrane dans la bannière. */
+.fjc-hero__watermark {
+  font-size: min(31vw,460px);  /* Fixe la taille du texte à min(31vw,460px). */
+  font-weight: 1000;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  right: -13%;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  bottom: -14%;  /* Fixe la distance par rapport au bord inférieur du conteneur de référence. */
+  line-height: 1;  /* Règle l’espace vertical entre les lignes de texte. */
+  color: rgba(255,255,255,.075);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  letter-spacing: -.09em;  /* Augmente ou resserre l’espace entre les lettres. */
+  transform: rotate(-10deg);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+  font-style: italic;  /* Active ou désactive le style italique. */
+  user-select: none;  /* Empêche la sélection accidentelle de cet élément décoratif. */
+}
+
+/* Place la petite mention verticale sur le bord droit de la bannière. */
+.fjc-hero__vertical {
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  right: 0;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  top: 42%;  /* Fixe la distance par rapport au bord supérieur du conteneur de référence. */
+  writing-mode: vertical-rl;  /* Oriente l’écriture verticalement au lieu de l’horizontale. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 10px;  /* Fixe la taille du texte à 10px. */
+  letter-spacing: .32em;  /* Augmente ou resserre l’espace entre les lettres. */
+  opacity: .7;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+}
+
+/* Positionne et stylise l’incitation à faire défiler la page. */
+.fjc-scroll-cue {
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  left: max(32px,calc((100vw - var(--fjc-shell))/2));  /* Fixe la distance par rapport au bord gauche du conteneur de référence. */
+  bottom: 28px;  /* Fixe la distance par rapport au bord inférieur du conteneur de référence. */
+  color: #fff !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 11px;  /* Fixe la taille du texte à 11px. */
+  letter-spacing: .15em;  /* Augmente ou resserre l’espace entre les lettres. */
+  z-index: 4;  /* Détermine l’ordre d’empilement des éléments superposés. */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  gap: 17px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Colore et agrandit la flèche de défilement. */
+.fjc-scroll-cue span {
+  font-size: 20px;  /* Fixe la taille du texte à 20px. */
+  color: #f1243e;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Cache l’ancienne légende latérale de la bannière. */
+.fjc-hero__sidecaption {
+  display: none;  /* Masque complètement cet élément sans lui réserver de place. */
+}
+
+/* Crée une bande rouge horizontale séparant les sections. */
+.fjc-stripe {
+  background: var(--fjc-red);  /* Applique au fond la couleur définie par une variable du thème. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  min-height: 58px;  /* Fixe la hauteur minimale à 58px. */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+}
+
+/* Répartit les éléments texte et séparateurs dans la bande rouge. */
+.fjc-stripe__inner {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  justify-content: space-between;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  gap: 18px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  font-size: 11px;  /* Fixe la taille du texte à 11px. */
+  letter-spacing: .15em;  /* Augmente ou resserre l’espace entre les lettres. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+}
+
+/* Différencie visuellement les séparateurs ou éléments pairs de la bande. */
+.fjc-stripe__inner span:nth-child(even) {
+  font-size: 18px;  /* Fixe la taille du texte à 18px. */
+  color: rgba(255,255,255,.65);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Applique l’espacement vertical commun aux sections du site. */
+.fjc-section {
+  padding: 90px 0 95px;  /* Règle les marges intérieures (90px 0 95px). */
+}
+
+/* Donne un fond blanc à une variante de section. */
+.fjc-section--light {
+  background: #fff;  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Donne un fond gris clair à une variante de section. */
+.fjc-section--muted {
+  background: #f2f2f3;  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Aligne un titre de section et ses actions ou informations complémentaires. */
+.fjc-section__head {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  justify-content: space-between;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  align-items: end;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  gap: 28px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  margin-bottom: 34px;  /* Règle l’espace extérieur en dessous (34px). */
+}
+
+/* Crée le petit surtitre rouge affiché au-dessus des sections. */
+.fjc-eyebrow {
+  color: var(--fjc-red);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 11px;  /* Fixe la taille du texte à 11px. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: .2em;  /* Augmente ou resserre l’espace entre les lettres. */
+  margin-bottom: 15px !important;  /* Règle l’espace extérieur en dessous (15px). */
+}
+
+/* Met en valeur les grands titres des sections de l’accueil. */
+.fjc-home .fjc-section h2 {
+  font-size: clamp(35px,4.3vw,58px);  /* Adapte la taille du texte à l’écran tout en respectant un minimum et un maximum. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  color: #15151a;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Colore en rouge les mots accentués dans les titres de niveau 2. */
+.fjc-home h2 span {
+  color: var(--fjc-red);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Règle la largeur et la lisibilité du texte d’introduction des sections. */
+.fjc-home .fjc-lead {
+  max-width: 580px;  /* Limite la largeur maximale à 580px. */
+  color: #64646e;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 15px;  /* Fixe la taille du texte à 15px. */
+  line-height: 1.8;  /* Règle l’espace vertical entre les lignes de texte. */
+  margin-top: 14px;  /* Règle l’espace extérieur au-dessus (14px). */
+}
+
+/* Dispose côte à côte les flèches de navigation du carrousel. */
+.fjc-arrows {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  gap: 8px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Donne aux boutons fléchés une taille cliquable et un style discret. */
+.fjc-arrows button {
+  height: 45px;  /* Définit la hauteur à 45px. */
+  width: 45px;  /* Définit la largeur à 45px. */
+  border: 1px solid #d3d3d6;  /* Définit l’épaisseur, le style et la couleur du contour. */
+  background: #fff;  /* Définit la couleur d’arrière-plan. */
+  cursor: pointer;  /* Affiche le curseur indiquant que l’élément est cliquable. */
+  font-size: 21px;  /* Fixe la taille du texte à 21px. */
+  font-weight: 700;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  transition: .2s;  /* Anime progressivement les changements de style (durée et accélération). */
+}
+
+/* Met en rouge les flèches de navigation au survol. */
+.fjc-arrows button:hover {
+  background: var(--fjc-red);  /* Applique au fond la couleur définie par une variable du thème. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  border-color: var(--fjc-red);  /* Définit la couleur de l’ensemble des bordures. */
+}
+
+/* Affiche les équipes en carrousel horizontal de trois cartes avec défilement aimanté. */
+.fjc-team-track {
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  grid-auto-flow: column;  /* Choisit de placer automatiquement les éléments par colonne ou par ligne. */
+  grid-auto-columns: calc((100% - 42px)/3);  /* Fixe la largeur des colonnes créées automatiquement dans la grille. */
+  gap: 21px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  overflow-x: auto;  /* Autorise ou masque le défilement horizontal du contenu. */
+  scroll-snap-type: x mandatory;  /* Aimante le défilement vers des positions précises sur l’axe horizontal. */
+  scrollbar-width: none;  /* Définit l’épaisseur de la barre de défilement ; none la cache. */
+  padding: 2px 0 7px;  /* Règle les marges intérieures (2px 0 7px). */
+  scroll-behavior: smooth;  /* Rend le défilement animé plutôt qu’instantané. */
+}
+
+/* Masque la barre de défilement du carrousel dans les navigateurs WebKit. */
+.fjc-team-track::-webkit-scrollbar {
+  display: none;  /* Masque complètement cet élément sans lui réserver de place. */
+}
+
+/* Construit la carte d’équipe, sa hauteur, son fond et sa disposition interne. */
+.fjc-team-card {
+  height: 384px;  /* Définit la hauteur à 384px. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+  justify-content: space-between;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  isolation: isolate;  /* Crée un contexte d’empilement indépendant pour gérer les calques internes. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+  padding: 25px;  /* Règle les marges intérieures (25px). */
+  color: #fff !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  background: #1a1a22;  /* Définit la couleur d’arrière-plan. */
+  scroll-snap-align: start;  /* Définit où une carte s’aligne à la fin du défilement. */
+}
+
+/* Ajoute le fond animé d’une carte d’équipe derrière son contenu. */
+.fjc-team-card::before {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  z-index: -2;  /* Détermine l’ordre d’empilement des éléments superposés. */
+  transition: transform .5s ease;  /* Anime progressivement les changements de style (durée et accélération). */
+}
+
+/* Ajoute un dégradé sombre à la carte pour garder le texte lisible. */
+.fjc-team-card::after {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  background: linear-gradient(0deg,rgba(0,0,0,.87),rgba(0,0,0,.18) 65%);  /* Dessine un dégradé de fond, sans fichier image. */
+  z-index: -1;  /* Détermine l’ordre d’empilement des éléments superposés. */
+}
+
+/* Agrandit doucement le décor de la carte d’équipe au survol. */
+.fjc-team-card:hover::before {
+  transform: scale(1.08);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+}
+
+/* Définit le décor rouge de la première variante de carte d’équipe. */
+.fjc-team-card--one::before {
+  background: linear-gradient(130deg,#bb1024,#42131d 70%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Définit le décor gris foncé de la deuxième variante de carte d’équipe. */
+.fjc-team-card--two::before {
+  background: linear-gradient(130deg,#41414c,#14151b 70%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Définit le décor rouge sombre de la troisième variante de carte d’équipe. */
+.fjc-team-card--three::before {
+  background: linear-gradient(120deg,#c71f31,#200f16 75%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Définit le décor gris de la quatrième variante de carte d’équipe. */
+.fjc-team-card--four::before {
+  background: linear-gradient(120deg,#6c737b,#17181b 75%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Stylise l’index ou numéro situé en haut d’une carte d’équipe. */
+.fjc-team-card__index {
+  letter-spacing: .16em;  /* Augmente ou resserre l’espace entre les lettres. */
+  font-size: 10px;  /* Fixe la taille du texte à 10px. */
+  font-weight: 800;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  z-index: 1;  /* Détermine l’ordre d’empilement des éléments superposés. */
+}
+
+/* Positionne les éléments graphiques décoratifs de la carte d’équipe. */
+.fjc-team-card__art {
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  place-items: center;  /* Centre ou aligne les contenus des cellules sur les deux axes. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+  z-index: 0;  /* Détermine l’ordre d’empilement des éléments superposés. */
+}
+
+/* Dessine un grand cercle translucide dans la carte d’équipe. */
+.fjc-team-card__art:before {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  width: 240px;  /* Définit la largeur à 240px. */
+  height: 240px;  /* Définit la hauteur à 240px. */
+  border: 34px solid rgba(255,255,255,.07);  /* Définit l’épaisseur, le style et la couleur du contour. */
+  border-radius: 50%;  /* Arrondit l’élément en cercle lorsque largeur et hauteur sont égales. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  right: -70px;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  top: 38px;  /* Fixe la distance par rapport au bord supérieur du conteneur de référence. */
+}
+
+/* Ajoute une très grande lettre inclinée en filigrane dans la carte d’équipe. */
+.fjc-team-card__art span {
+  font-weight: 1000;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 180px;  /* Fixe la taille du texte à 180px. */
+  font-style: italic;  /* Active ou désactive le style italique. */
+  opacity: .11;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+  transform: rotate(-12deg);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+}
+
+/* Aligne les textes au bas de la carte d’équipe en colonne. */
+.fjc-team-card__base {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+  gap: 12px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  z-index: 1;  /* Détermine l’ordre d’empilement des éléments superposés. */
+}
+
+/* Met en valeur le nom de l’équipe. */
+.fjc-home .fjc-team-card h3 {
+  font-size: 32px;  /* Fixe la taille du texte à 32px. */
+  line-height: 1.0;  /* Règle l’espace vertical entre les lignes de texte. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Stylise le petit sous-titre de la carte d’équipe. */
+.fjc-team-card__base>span {
+  font-size: 11px;  /* Fixe la taille du texte à 11px. */
+  letter-spacing: .15em;  /* Augmente ou resserre l’espace entre les lettres. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  color: #f5a5ad;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Centre l’action de consultation placée après les cartes. */
+.fjc-centered-action {
+  text-align: center;  /* Règle l’alignement horizontal du texte. */
+  margin-top: 27px;  /* Règle l’espace extérieur au-dessus (27px). */
+}
+
+/* Met en forme un lien textuel souligné d’un trait rouge. */
+.fjc-text-link {
+  color: #19191d !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 12px;  /* Fixe la taille du texte à 12px. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: .095em;  /* Augmente ou resserre l’espace entre les lettres. */
+  white-space: nowrap;  /* Empêche ou autorise le retour à la ligne automatique. */
+  padding: 11px 0;  /* Règle les marges intérieures (11px 0). */
+  border-bottom: 2px solid var(--fjc-red);  /* Définit la bordure correspondante de cet élément. */
+}
+
+/* Colore le lien textuel au survol. */
+.fjc-text-link:hover {
+  color: var(--fjc-red) !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Décale la flèche située à la fin du lien textuel. */
+.fjc-text-link span {
+  margin-left: 15px;  /* Règle l’espace extérieur à gauche (15px). */
+}
+
+/* Dispose les actualités en trois colonnes, avec une première colonne plus large. */
+.fjc-news-grid {
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  grid-template-columns: 1.24fr 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  gap: 20px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Construit une carte d’actualité à fond blanc avec ombre légère. */
+.fjc-news-card {
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+  background: #fff;  /* Définit la couleur d’arrière-plan. */
+  color: #18191d !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  min-width: 0;  /* Fixe la largeur minimale à 0. */
+  box-shadow: 0 8px 30px rgba(0,0,0,.035);  /* Ajoute une ombre visuelle ; « none » la désactive. */
+}
+
+/* Soulève une carte d’actualité et accentue son ombre au survol. */
+.fjc-news-card:hover {
+  transform: translateY(-6px);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+  box-shadow: 0 18px 35px rgba(0,0,0,.09);  /* Ajoute une ombre visuelle ; « none » la désactive. */
+}
+
+/* Réserve un espace graphique centré en haut de chaque actualité. */
+.fjc-news-card__visual {
+  height: 188px;  /* Définit la hauteur à 188px. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  justify-content: center;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+}
+
+/* Augmente la hauteur du visuel de l’actualité mise en avant. */
+.fjc-news-card--featured .fjc-news-card__visual {
+  height: 225px;  /* Définit la hauteur à 225px. */
+}
+
+/* Ajoute un anneau décoratif translucide dans le visuel d’actualité. */
+.fjc-news-card__visual::after {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  width: 150px;  /* Définit la largeur à 150px. */
+  height: 150px;  /* Définit la hauteur à 150px. */
+  border: 18px solid rgba(255,255,255,.07);  /* Définit l’épaisseur, le style et la couleur du contour. */
+  border-radius: 50%;  /* Arrondit l’élément en cercle lorsque largeur et hauteur sont égales. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  right: -25px;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  bottom: -60px;  /* Fixe la distance par rapport au bord inférieur du conteneur de référence. */
+}
+
+/* Dessine les grandes lettres décoratives du visuel d’actualité. */
+.fjc-news-card__visual span {
+  font-weight: 1000;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  color: rgba(255,255,255,.17);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 42px;  /* Fixe la taille du texte à 42px. */
+  letter-spacing: -.08em;  /* Augmente ou resserre l’espace entre les lettres. */
+  transform: rotate(-10deg);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+}
+
+/* Applique un dégradé rouge aux visuels concernés. */
+.fjc-news-card__visual--red {
+  background: linear-gradient(135deg,#ae1022,#ee263d);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Applique un dégradé gris-noir aux visuels concernés. */
+.fjc-news-card__visual--black {
+  background: linear-gradient(135deg,#1c1e24,#626571);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Applique une deuxième variante de dégradé rouge aux visuels concernés. */
+.fjc-news-card__visual--light {
+  background: linear-gradient(135deg,#76111b,#d62b3c);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Organise le contenu textuel de la carte d’actualité en colonne. */
+.fjc-news-card__content {
+  padding: 25px 24px 28px;  /* Règle les marges intérieures (25px 24px 28px). */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+  flex: 1;  /* Règle la capacité de l’élément à grandir ou rétrécir dans Flexbox. */
+  align-items: start;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+}
+
+/* Crée l’étiquette colorée de catégorie d’une actualité. */
+.fjc-tag {
+  background: #fae7e9;  /* Définit la couleur d’arrière-plan. */
+  color: #b70d24;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 10px;  /* Fixe la taille du texte à 10px. */
+  letter-spacing: .12em;  /* Augmente ou resserre l’espace entre les lettres. */
+  padding: 6px 8px;  /* Règle les marges intérieures (6px 8px). */
+}
+
+/* Règle le titre d’une carte d’actualité. */
+.fjc-home .fjc-news-card h3 {
+  margin-top: 15px;  /* Règle l’espace extérieur au-dessus (15px). */
+  font-size: 24px;  /* Fixe la taille du texte à 24px. */
+  line-height: 1.18;  /* Règle l’espace vertical entre les lignes de texte. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+}
+
+/* Règle le paragraphe d’extrait d’une actualité. */
+.fjc-home .fjc-news-card p {
+  font-size: 13px;  /* Fixe la taille du texte à 13px. */
+  line-height: 1.7;  /* Règle l’espace vertical entre les lignes de texte. */
+  color: #68686e;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  margin-top: 12px;  /* Règle l’espace extérieur au-dessus (12px). */
+  margin-bottom: 25px;  /* Règle l’espace extérieur en dessous (25px). */
+}
+
+/* Positionne et colore le lien « lire la suite » d’une actualité. */
+.fjc-readmore {
+  margin-top: auto;  /* Règle l’espace extérieur au-dessus (auto). */
+  font-size: 11px;  /* Fixe la taille du texte à 11px. */
+  letter-spacing: .09em;  /* Augmente ou resserre l’espace entre les lettres. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  color: #be172b;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Crée la section galerie sur fond sombre avec texte blanc. */
+.fjc-gallery {
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  background: #16171b;  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Force le titre de galerie à rester blanc. */
+.fjc-gallery .fjc-section__head h2 {
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Utilise un gris clair pour le texte de présentation de la galerie. */
+.fjc-gallery .fjc-lead {
+  color: #b5b4bc;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Prévoit une variante claire des liens sur les fonds foncés. */
+.fjc-text-link--light {
+  color: #fff !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Répartit les vignettes de la galerie dans trois colonnes. */
+.fjc-gallery-grid {
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  grid-template-columns: 1.35fr 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  gap: 18px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Définit la taille, le fond et le cadre d’une vignette de galerie. */
+.fjc-gallery-tile {
+  height: 288px;  /* Définit la hauteur à 288px. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+  isolation: isolate;  /* Crée un contexte d’empilement indépendant pour gérer les calques internes. */
+  background: #202228;  /* Définit la couleur d’arrière-plan. */
+  color: #fff !important;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Place un fond décoratif extensible derrière chaque vignette. */
+.fjc-gallery-tile::before {
+  content: "";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  inset: 0;  /* Règle simultanément les distances aux quatre bords. */
+  z-index: -1;  /* Détermine l’ordre d’empilement des éléments superposés. */
+  transition: transform .5s;  /* Anime progressivement les changements de style (durée et accélération). */
+}
+
+/* Zoom légèrement le décor de galerie au survol. */
+.fjc-gallery-tile:hover::before {
+  transform: scale(1.1);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+}
+
+/* Donne un dégradé rouge à la première vignette de galerie. */
+.fjc-gallery-tile--a::before {
+  background: linear-gradient(130deg,#c91c2c,#2c0b14 85%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Donne un dégradé gris à la deuxième vignette de galerie. */
+.fjc-gallery-tile--b::before {
+  background: linear-gradient(135deg,#666874,#1a1b22 85%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Donne un dégradé rouge sombre à la troisième vignette de galerie. */
+.fjc-gallery-tile--c::before {
+  background: linear-gradient(135deg,#641622,#1a1c23 85%);  /* Dessine un dégradé de fond, sans fichier image. */
+}
+
+/* Affiche un texte géant transparent dans le fond de la vignette. */
+.fjc-gallery-tile__ghost {
+  font-size: 150px;  /* Fixe la taille du texte à 150px. */
+  letter-spacing: -.09em;  /* Augmente ou resserre l’espace entre les lettres. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  top: 8px;  /* Fixe la distance par rapport au bord supérieur du conteneur de référence. */
+  right: 0;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  color: rgba(255,255,255,.075);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-style: italic;  /* Active ou désactive le style italique. */
+  line-height: 1;  /* Règle l’espace vertical entre les lignes de texte. */
+}
+
+/* Positionne la légende de galerie en bas avec une ligne séparatrice. */
+.fjc-gallery-tile__caption {
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  left: 20px;  /* Fixe la distance par rapport au bord gauche du conteneur de référence. */
+  right: 20px;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  bottom: 20px;  /* Fixe la distance par rapport au bord inférieur du conteneur de référence. */
+  font-size: 19px;  /* Fixe la taille du texte à 19px. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  justify-content: space-between;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  border-top: 1px solid rgba(255,255,255,.3);  /* Définit la bordure correspondante de cet élément. */
+  padding-top: 17px;  /* Règle l’espace intérieur en haut (17px). */
+}
+
+/* Crée la bande rouge incitant à rejoindre le club. */
+.fjc-join {
+  background: var(--fjc-red);  /* Applique au fond la couleur définie par une variable du thème. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+}
+
+/* Dessine le sigle « FJC » en grand et en transparence dans cette bande. */
+.fjc-join::before {
+  content: "FJC";  /* Crée le contenu du pseudo-élément ; une chaîne vide sert aux dessins CSS. */
+  position: absolute;  /* Positionne l’élément par rapport à son conteneur de référence, hors du flux normal. */
+  right: 2%;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+  bottom: -88px;  /* Fixe la distance par rapport au bord inférieur du conteneur de référence. */
+  font-weight: 1000;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 310px;  /* Fixe la taille du texte à 310px. */
+  color: rgba(255,255,255,.07);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-style: italic;  /* Active ou désactive le style italique. */
+  line-height: 1;  /* Règle l’espace vertical entre les lignes de texte. */
+  letter-spacing: -.11em;  /* Augmente ou resserre l’espace entre les lettres. */
+}
+
+/* Aligne le texte et l’action de la zone « rejoindre le club ». */
+.fjc-join__inner {
+  min-height: 262px;  /* Fixe la hauteur minimale à 262px. */
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  align-items: center;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+  justify-content: space-between;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+  gap: 50px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  position: relative;  /* Conserve l’élément dans le flux et sert de repère aux éléments positionnés. */
+}
+
+/* Règle le petit texte d’introduction dans la zone d’adhésion. */
+.fjc-join__inner p {
+  font-size: 11px;  /* Fixe la taille du texte à 11px. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: .2em;  /* Augmente ou resserre l’espace entre les lettres. */
+  color: #ffe8ed;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  margin-bottom: 11px;  /* Règle l’espace extérieur en dessous (11px). */
+}
+
+/* Met en forme le titre principal de la zone d’adhésion. */
+.fjc-home .fjc-join h2 {
+  font-size: clamp(28px,3.5vw,47px);  /* Adapte la taille du texte à l’écran tout en respectant un minimum et un maximum. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  max-width: 700px;  /* Limite la largeur maximale à 700px. */
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+}
+
+/* Assombrit le mot mis en évidence dans le titre d’adhésion. */
+.fjc-join h2 em {
+  font-style: normal;  /* Active ou désactive le style italique. */
+  color: #111117;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
+/* Donne un fond blanc à la section partenaires. */
+.fjc-partners {
+  background: #fff;  /* Définit la couleur d’arrière-plan. */
+}
+
+/* Aligne quatre emplacements de logos de partenaires. */
+.fjc-partners__placeholders {
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  grid-template-columns: repeat(4,1fr);  /* Définit le nombre et la largeur des colonnes de la grille. */
+  gap: 14px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Crée les cadres de réservation pour les futurs logos de partenaires. */
+.fjc-partners__placeholders div {
+  height: 110px;  /* Définit la hauteur à 110px. */
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  place-items: center;  /* Centre ou aligne les contenus des cellules sur les deux axes. */
+  background: #f2f2f3;  /* Définit la couleur d’arrière-plan. */
+  border: 1px dashed #c9c9cb;  /* Définit l’épaisseur, le style et la couleur du contour. */
+  color: #97989d;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 12px;  /* Fixe la taille du texte à 12px. */
+  font-weight: 900;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: .13em;  /* Augmente ou resserre l’espace entre les lettres. */
+}
+
+/* Crée le pied de page personnalisé, sombre et espacé. */
+.fjc-footer {
+  background: #0c0d10;  /* Définit la couleur d’arrière-plan. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  padding: 65px 0 62px;  /* Règle les marges intérieures (65px 0 62px). */
+}
+
+/* Répartit les colonnes du pied de page avec une colonne de marque plus grande. */
+.fjc-footer__grid {
+  display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+  grid-template-columns: 2fr 1fr 1fr 1.1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  gap: 40px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+}
+
+/* Affiche le nom ou sigle du club en grand dans le pied de page. */
+.fjc-footer__brand {
+  font-size: 38px;  /* Fixe la taille du texte à 38px. */
+  line-height: 1;  /* Règle l’espace vertical entre les lignes de texte. */
+  font-weight: 1000;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  letter-spacing: -.04em;  /* Augmente ou resserre l’espace entre les lettres. */
+}
+
+/* Met en valeur en rouge la partie secondaire du logo textuel. */
+.fjc-footer__brand span {
+  color: var(--fjc-red);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 17px;  /* Fixe la taille du texte à 17px. */
+  letter-spacing: .07em;  /* Augmente ou resserre l’espace entre les lettres. */
+}
+
+/* Règle les paragraphes descriptifs dans le pied de page. */
+.fjc-home .fjc-footer p {
+  font-size: 13px;  /* Fixe la taille du texte à 13px. */
+  line-height: 1.9;  /* Règle l’espace vertical entre les lignes de texte. */
+  color: #a5a5ac;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  margin-top: 15px;  /* Règle l’espace extérieur au-dessus (15px). */
+}
+
+/* Stylise les intitulés des colonnes du pied de page. */
+.fjc-footer h3 {
+  font-weight: 950;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  font-size: 12px;  /* Fixe la taille du texte à 12px. */
+  letter-spacing: .1em;  /* Augmente ou resserre l’espace entre les lettres. */
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  margin-bottom: 22px;  /* Règle l’espace extérieur en dessous (22px). */
+}
+
+/* Présente les liens du pied de page comme des lignes distinctes. */
+.fjc-footer a {
+  display: block;  /* Place l’élément sur sa propre ligne en occupant l’espace disponible. */
+  color: #adadb4;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font-size: 13px;  /* Fixe la taille du texte à 13px. */
+  margin: 9px 0;  /* Règle les marges extérieures (9px 0). */
+}
+
+/* Éclaircit les liens du pied de page au survol. */
+.fjc-footer a:hover {
+  color: #fff;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+}
+
 /* Styles des pages intérieures */
-.md-content__inner:not(:has(.fjc-home)){padding-bottom:3rem}
-.md-content__inner:not(:has(.fjc-home)) h1{color:#15151b;letter-spacing:-.035em}
-.md-content__inner:not(:has(.fjc-home)) h2{border-bottom:2px solid #e7e7ea;padding-bottom:.35em}
-.fjc-contact-note{border-left:4px solid var(--fjc-red);background:#faf1f2;padding:17px 20px;margin:24px 0}
-/* Animations discrètes, respectueuses du mode réduction des mouvements */
-@media(prefers-reduced-motion:no-preference){.fjc-home [data-fjc-reveal]{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.fjc-home [data-fjc-reveal].fjc-is-visible{opacity:1;transform:none}}
-@media(max-width:950px){.fjc-shell{width:calc(100% - 42px)}.fjc-hero,.fjc-hero__layout{min-height:570px}.fjc-hero__copy{max-width:680px}.fjc-hero::after{right:-28%;opacity:.54}.fjc-team-track{grid-auto-columns:calc((100% - 21px)/2)}.fjc-news-grid{grid-template-columns:1fr 1fr}.fjc-news-card--featured{grid-column:span 2}.fjc-news-card--featured{display:grid;grid-template-columns:1fr 1fr}.fjc-news-card--featured .fjc-news-card__visual{height:100%;min-height:230px}.fjc-gallery-grid{grid-template-columns:1fr 1fr}.fjc-gallery-tile:first-child{grid-column:span 2}.fjc-partners__placeholders{grid-template-columns:repeat(2,1fr)}.fjc-footer__grid{grid-template-columns:2fr 1fr 1fr;gap:28px}}
-@media(max-width:620px){.fjc-shell{width:calc(100% - 36px)}.fjc-hero,.fjc-hero__layout{min-height:575px}.fjc-hero__copy{padding:75px 0 95px}.fjc-kicker{font-size:10px;letter-spacing:.16em}.fjc-home .fjc-hero h1{font-size:clamp(43px,10.7vw,67px)}.fjc-home .fjc-hero__copy p{font-size:14px;line-height:1.6}.fjc-hero::after{right:-110%;opacity:.45;transform:rotate(34deg)}.fjc-hero__vertical{display:none}.fjc-hero__watermark{font-size:300px;right:-36%;bottom:-7%}.fjc-hero__buttons{flex-direction:column;align-items:stretch;max-width:315px}.fjc-button{padding:16px 18px;min-height:50px}.fjc-scroll-cue{left:18px}.fjc-stripe__inner{justify-content:center;flex-wrap:wrap;gap:10px 14px;padding:13px 0;font-size:9px}.fjc-stripe__inner span:nth-last-child(-n+2){display:none}.fjc-section{padding:62px 0 66px}.fjc-section__head{align-items:start;gap:20px;flex-direction:column}.fjc-home .fjc-section h2{font-size:37px}.fjc-home .fjc-lead{font-size:14px}.fjc-team-track{grid-auto-columns:minmax(245px,78%);gap:13px}.fjc-team-card{height:350px}.fjc-news-grid{display:grid;grid-template-columns:1fr}.fjc-news-card--featured{display:flex;grid-column:auto}.fjc-news-card--featured .fjc-news-card__visual{height:190px;min-height:0}.fjc-news-card__visual{height:180px}.fjc-news-card__content{padding:20px}.fjc-gallery-grid{grid-template-columns:1fr}.fjc-gallery-tile:first-child{grid-column:auto}.fjc-gallery-tile{height:220px}.fjc-join__inner{padding:50px 0;min-height:0;align-items:start;flex-direction:column;gap:27px}.fjc-partners__placeholders div{height:90px;font-size:10px}.fjc-footer__grid{grid-template-columns:1fr 1fr;gap:32px}.fjc-footer__grid>div:first-child{grid-column:span 2}.fjc-footer{padding:55px 0}}
 
+/* Ajoute un espace inférieur aux pages intérieures hors accueil. */
+.md-content__inner:not(:has(.fjc-home)) {
+  padding-bottom: 3rem;  /* Règle l’espace intérieur en bas (3rem). */
+}
+
+/* Règle le titre principal des pages intérieures. */
+.md-content__inner:not(:has(.fjc-home)) h1 {
+  color: #15151b;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  letter-spacing: -.035em;  /* Augmente ou resserre l’espace entre les lettres. */
+}
+
+/* Souligne les titres de second niveau des pages intérieures. */
+.md-content__inner:not(:has(.fjc-home)) h2 {
+  border-bottom: 2px solid #e7e7ea;  /* Définit la bordure correspondante de cet élément. */
+  padding-bottom: .35em;  /* Règle l’espace intérieur en bas (.35em). */
+}
+
+/* Affiche une note de contact dans un encadré à barre rouge. */
+.fjc-contact-note {
+  border-left: 4px solid var(--fjc-red);  /* Définit la bordure correspondante de cet élément. */
+  background: #faf1f2;  /* Définit la couleur d’arrière-plan. */
+  padding: 17px 20px;  /* Règle les marges intérieures (17px 20px). */
+  margin: 24px 0;  /* Règle les marges extérieures (24px 0). */
+}
+
+/* Animations discrètes, respectueuses du mode réduction des mouvements */
+
+/* Active les animations de révélation uniquement si la personne n’a pas demandé de réduire les mouvements. */
+
+@media (prefers-reduced-motion:no-preference) {
+
+  /* Cache initialement les éléments à révéler pour préparer leur apparition animée. */
+  .fjc-home [data-fjc-reveal] {
+    opacity: 0;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+    transform: translateY(22px);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+    transition: opacity .65s ease,transform .65s ease;  /* Anime progressivement les changements de style (durée et accélération). */
+  }
+
+  /* Rend visibles les éléments lorsque la classe d’apparition est ajoutée. */
+  .fjc-home [data-fjc-reveal].fjc-is-visible {
+    opacity: 1;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+    transform: none;  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+  }
+
+}
+
+/* Adapte les mises en page aux tablettes et aux écrans jusqu’à 950 px de large. */
+
+@media (max-width:950px) {
+
+  /* Sur tablette ou écran moyen : centre le contenu dans une largeur maximale commune à toutes les sections. */
+  .fjc-shell {
+    width: calc(100% - 42px);  /* Définit la largeur à calc(100% - 42px). */
+  }
+
+  /* Sur tablette ou écran moyen : adapte la hauteur de la bannière et de sa structure aux écrans de taille intermédiaire. */
+  .fjc-hero,.fjc-hero__layout {
+    min-height: 570px;  /* Fixe la hauteur minimale à 570px. */
+  }
+
+  /* Sur tablette ou écran moyen : dimensionne et place le texte principal de la bannière. */
+  .fjc-hero__copy {
+    max-width: 680px;  /* Limite la largeur maximale à 680px. */
+  }
+
+  /* Sur tablette ou écran moyen : dessine la grande bande rouge inclinée dans le fond de la bannière. */
+  .fjc-hero::after {
+    right: -28%;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+    opacity: .54;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+  }
+
+  /* Sur tablette ou écran moyen : affiche les équipes en carrousel horizontal de trois cartes avec défilement aimanté. */
+  .fjc-team-track {
+    grid-auto-columns: calc((100% - 21px)/2);  /* Fixe la largeur des colonnes créées automatiquement dans la grille. */
+  }
+
+  /* Sur tablette ou écran moyen : dispose les actualités en trois colonnes, avec une première colonne plus large. */
+  .fjc-news-grid {
+    grid-template-columns: 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  }
+
+  /* Sur tablette ou écran moyen : réorganise l’actualité vedette pour qu’elle occupe la grille de manière adaptée. */
+  .fjc-news-card--featured {
+    grid-column: span 2;  /* Précise le nombre de colonnes occupées par cet élément. */
+  }
+
+  /* Sur tablette ou écran moyen : réorganise l’actualité vedette pour qu’elle occupe la grille de manière adaptée. */
+  .fjc-news-card--featured {
+    display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+    grid-template-columns: 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  }
+
+  /* Sur tablette ou écran moyen : augmente la hauteur du visuel de l’actualité mise en avant. */
+  .fjc-news-card--featured .fjc-news-card__visual {
+    height: 100%;  /* Définit la hauteur à 100%. */
+    min-height: 230px;  /* Fixe la hauteur minimale à 230px. */
+  }
+
+  /* Sur tablette ou écran moyen : répartit les vignettes de la galerie dans trois colonnes. */
+  .fjc-gallery-grid {
+    grid-template-columns: 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  }
+
+  /* Sur tablette ou écran moyen : étend la première vignette de galerie sur deux colonnes, sur tablette. */
+  .fjc-gallery-tile:first-child {
+    grid-column: span 2;  /* Précise le nombre de colonnes occupées par cet élément. */
+  }
+
+  /* Sur tablette ou écran moyen : aligne quatre emplacements de logos de partenaires. */
+  .fjc-partners__placeholders {
+    grid-template-columns: repeat(2,1fr);  /* Définit le nombre et la largeur des colonnes de la grille. */
+  }
+
+  /* Sur tablette ou écran moyen : répartit les colonnes du pied de page avec une colonne de marque plus grande. */
+  .fjc-footer__grid {
+    grid-template-columns: 2fr 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+    gap: 28px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  }
+
+}
+
+/* Adapte les composants aux smartphones et petits écrans jusqu’à 620 px de large. */
+
+@media (max-width:620px) {
+
+  /* Sur téléphone : centre le contenu dans une largeur maximale commune à toutes les sections. */
+  .fjc-shell {
+    width: calc(100% - 36px);  /* Définit la largeur à calc(100% - 36px). */
+  }
+
+  /* Sur téléphone : adapte la hauteur de la bannière et de sa structure aux écrans de taille intermédiaire. */
+  .fjc-hero,.fjc-hero__layout {
+    min-height: 575px;  /* Fixe la hauteur minimale à 575px. */
+  }
+
+  /* Sur téléphone : dimensionne et place le texte principal de la bannière. */
+  .fjc-hero__copy {
+    padding: 75px 0 95px;  /* Règle les marges intérieures (75px 0 95px). */
+  }
+
+  /* Sur téléphone : présente le petit libellé situé au-dessus du titre de bienvenue. */
+  .fjc-kicker {
+    font-size: 10px;  /* Fixe la taille du texte à 10px. */
+    letter-spacing: .16em;  /* Augmente ou resserre l’espace entre les lettres. */
+  }
+
+  /* Sur téléphone : met en forme le très grand titre d’accueil, avec taille adaptable à l’écran. */
+  .fjc-home .fjc-hero h1 {
+    font-size: clamp(43px,10.7vw,67px);  /* Adapte la taille du texte à l’écran tout en respectant un minimum et un maximum. */
+  }
+
+  /* Sur téléphone : règle le paragraphe de présentation dans la bannière. */
+  .fjc-home .fjc-hero__copy p {
+    font-size: 14px;  /* Fixe la taille du texte à 14px. */
+    line-height: 1.6;  /* Règle l’espace vertical entre les lignes de texte. */
+  }
+
+  /* Sur téléphone : dessine la grande bande rouge inclinée dans le fond de la bannière. */
+  .fjc-hero::after {
+    right: -110%;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+    opacity: .45;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
+    transform: rotate(34deg);  /* Déplace, agrandit ou incline visuellement l’élément sans changer le flux. */
+  }
+
+  /* Sur téléphone : place la petite mention verticale sur le bord droit de la bannière. */
+  .fjc-hero__vertical {
+    display: none;  /* Masque complètement cet élément sans lui réserver de place. */
+  }
+
+  /* Sur téléphone : affiche un énorme mot ou sigle transparent en filigrane dans la bannière. */
+  .fjc-hero__watermark {
+    font-size: 300px;  /* Fixe la taille du texte à 300px. */
+    right: -36%;  /* Fixe la distance par rapport au bord droit du conteneur de référence. */
+    bottom: -7%;  /* Fixe la distance par rapport au bord inférieur du conteneur de référence. */
+  }
+
+  /* Sur téléphone : aligne les boutons d’action de la bannière et permet leur retour à la ligne. */
+  .fjc-hero__buttons {
+    flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+    align-items: stretch;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+    max-width: 315px;  /* Limite la largeur maximale à 315px. */
+  }
+
+  /* Sur téléphone : définit les dimensions, espacements et typographie communs des boutons personnalisés. */
+  .fjc-button {
+    padding: 16px 18px;  /* Règle les marges intérieures (16px 18px). */
+    min-height: 50px;  /* Fixe la hauteur minimale à 50px. */
+  }
+
+  /* Sur téléphone : positionne et stylise l’incitation à faire défiler la page. */
+  .fjc-scroll-cue {
+    left: 18px;  /* Fixe la distance par rapport au bord gauche du conteneur de référence. */
+  }
+
+  /* Sur téléphone : répartit les éléments texte et séparateurs dans la bande rouge. */
+  .fjc-stripe__inner {
+    justify-content: center;  /* Répartit les enfants sur l’axe principal du conteneur Flexbox. */
+    flex-wrap: wrap;  /* Autorise les éléments Flexbox à passer à la ligne suivante. */
+    gap: 10px 14px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+    padding: 13px 0;  /* Règle les marges intérieures (13px 0). */
+    font-size: 9px;  /* Fixe la taille du texte à 9px. */
+  }
+
+  /* Sur téléphone : masque les deux derniers éléments d’une série sur téléphone pour alléger l’affichage. */
+  .fjc-stripe__inner span:nth-last-child(-n+2) {
+    display: none;  /* Masque complètement cet élément sans lui réserver de place. */
+  }
+
+  /* Sur téléphone : applique l’espacement vertical commun aux sections du site. */
+  .fjc-section {
+    padding: 62px 0 66px;  /* Règle les marges intérieures (62px 0 66px). */
+  }
+
+  /* Sur téléphone : aligne un titre de section et ses actions ou informations complémentaires. */
+  .fjc-section__head {
+    align-items: start;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+    gap: 20px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+    flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+  }
+
+  /* Sur téléphone : met en valeur les grands titres des sections de l’accueil. */
+  .fjc-home .fjc-section h2 {
+    font-size: 37px;  /* Fixe la taille du texte à 37px. */
+  }
+
+  /* Sur téléphone : règle la largeur et la lisibilité du texte d’introduction des sections. */
+  .fjc-home .fjc-lead {
+    font-size: 14px;  /* Fixe la taille du texte à 14px. */
+  }
+
+  /* Sur téléphone : affiche les équipes en carrousel horizontal de trois cartes avec défilement aimanté. */
+  .fjc-team-track {
+    grid-auto-columns: minmax(245px,78%);  /* Fixe la largeur des colonnes créées automatiquement dans la grille. */
+    gap: 13px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  }
+
+  /* Sur téléphone : construit la carte d’équipe, sa hauteur, son fond et sa disposition interne. */
+  .fjc-team-card {
+    height: 350px;  /* Définit la hauteur à 350px. */
+  }
+
+  /* Sur téléphone : dispose les actualités en trois colonnes, avec une première colonne plus large. */
+  .fjc-news-grid {
+    display: grid;  /* Utilise une grille CSS pour organiser les éléments enfants. */
+    grid-template-columns: 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  }
+
+  /* Sur téléphone : réorganise l’actualité vedette pour qu’elle occupe la grille de manière adaptée. */
+  .fjc-news-card--featured {
+    display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+    grid-column: auto;  /* Précise le nombre de colonnes occupées par cet élément. */
+  }
+
+  /* Sur téléphone : augmente la hauteur du visuel de l’actualité mise en avant. */
+  .fjc-news-card--featured .fjc-news-card__visual {
+    height: 190px;  /* Définit la hauteur à 190px. */
+    min-height: 0;  /* Fixe la hauteur minimale à 0. */
+  }
+
+  /* Sur téléphone : réserve un espace graphique centré en haut de chaque actualité. */
+  .fjc-news-card__visual {
+    height: 180px;  /* Définit la hauteur à 180px. */
+  }
+
+  /* Sur téléphone : organise le contenu textuel de la carte d’actualité en colonne. */
+  .fjc-news-card__content {
+    padding: 20px;  /* Règle les marges intérieures (20px). */
+  }
+
+  /* Sur téléphone : répartit les vignettes de la galerie dans trois colonnes. */
+  .fjc-gallery-grid {
+    grid-template-columns: 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+  }
+
+  /* Sur téléphone : étend la première vignette de galerie sur deux colonnes, sur tablette. */
+  .fjc-gallery-tile:first-child {
+    grid-column: auto;  /* Précise le nombre de colonnes occupées par cet élément. */
+  }
+
+  /* Sur téléphone : définit la taille, le fond et le cadre d’une vignette de galerie. */
+  .fjc-gallery-tile {
+    height: 220px;  /* Définit la hauteur à 220px. */
+  }
+
+  /* Sur téléphone : aligne le texte et l’action de la zone « rejoindre le club ». */
+  .fjc-join__inner {
+    padding: 50px 0;  /* Règle les marges intérieures (50px 0). */
+    min-height: 0;  /* Fixe la hauteur minimale à 0. */
+    align-items: start;  /* Aligne les enfants sur l’axe transversal (vertical en ligne Flexbox). */
+    flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+    gap: 27px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  }
+
+  /* Sur téléphone : crée les cadres de réservation pour les futurs logos de partenaires. */
+  .fjc-partners__placeholders div {
+    height: 90px;  /* Définit la hauteur à 90px. */
+    font-size: 10px;  /* Fixe la taille du texte à 10px. */
+  }
+
+  /* Sur téléphone : répartit les colonnes du pied de page avec une colonne de marque plus grande. */
+  .fjc-footer__grid {
+    grid-template-columns: 1fr 1fr;  /* Définit le nombre et la largeur des colonnes de la grille. */
+    gap: 32px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  }
+
+  /* Sur téléphone : étend la première colonne du pied de page mobile sur toute la largeur disponible. */
+  .fjc-footer__grid>div:first-child {
+    grid-column: span 2;  /* Précise le nombre de colonnes occupées par cet élément. */
+  }
+
+  /* Sur téléphone : crée le pied de page personnalisé, sombre et espacé. */
+  .fjc-footer {
+    padding: 55px 0;  /* Règle les marges intérieures (55px 0). */
+  }
+
+}
 
 /* Formulaire de contact FJC Handball */
 
+/* Organise le formulaire de contact en colonne centrée et limitée en largeur. */
 .fjc-contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 650px;
-  margin: 24px auto;
+  display: flex;  /* Utilise Flexbox pour aligner et répartir les éléments enfants. */
+  flex-direction: column;  /* Définit si les enfants Flexbox sont disposés en ligne ou en colonne. */
+  gap: 12px;  /* Définit l’espacement entre les éléments de Flexbox ou de la grille. */
+  max-width: 650px;  /* Limite la largeur maximale à 650px. */
+  margin: 24px auto;  /* Règle les marges extérieures (24px auto). */
 }
 
+/* Donne davantage de visibilité aux libellés du formulaire. */
 .fjc-contact-form label {
-  font-weight: 600;
-  margin-top: 8px;
+  font-weight: 600;  /* Règle l’épaisseur des caractères (plus le nombre est élevé, plus ils sont gras). */
+  margin-top: 8px;  /* Règle l’espace extérieur au-dessus (8px). */
 }
 
+/* Uniformise les champs de saisie, listes déroulantes et zones de message. */
 .fjc-contact-form input,
 .fjc-contact-form select,
 .fjc-contact-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 8px;
-  background: var(--md-default-bg-color);
-  color: var(--md-default-fg-color);
-  font: inherit;
+  width: 100%;  /* Définit la largeur à 100%. */
+  padding: 12px 15px;  /* Règle les marges intérieures (12px 15px). */
+  border: 1px solid var(--md-default-fg-color--lightest);  /* Définit l’épaisseur, le style et la couleur du contour. */
+  border-radius: 8px;  /* Arrondit les angles de l’élément. */
+  background: var(--md-default-bg-color);  /* Applique au fond la couleur définie par une variable du thème. */
+  color: var(--md-default-fg-color);  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  font: inherit;  /* Récupère les réglages de police de l’élément parent. */
 }
 
+/* Met en évidence au clavier ou au clic le champ ayant le focus. */
 .fjc-contact-form input:focus,
 .fjc-contact-form select:focus,
 .fjc-contact-form textarea:focus {
-  outline: 2px solid #d7192e;
-  outline-offset: 2px;
+  outline: 2px solid #d7192e;  /* Trace un contour de mise au point, utile à l’accessibilité clavier. */
+  outline-offset: 2px;  /* Écarte légèrement le contour de mise au point de la bordure. */
 }
 
+/* Met en forme le bouton d’envoi du formulaire. */
 .fjc-contact-form .md-button {
-  align-self: flex-start;
-  background: #c8102e;
-  border-color: #c8102e;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
+  align-self: flex-start;  /* Modifie uniquement l’alignement de cet enfant dans son parent Flexbox. */
+  background: #c8102e;  /* Définit la couleur d’arrière-plan. */
+  border-color: #c8102e;  /* Définit la couleur de l’ensemble des bordures. */
+  color: white;  /* Définit la couleur du texte et des éléments qui l’héritent. */
+  cursor: pointer;  /* Affiche le curseur indiquant que l’élément est cliquable. */
+  border-radius: 8px;  /* Arrondit les angles de l’élément. */
 }
 
+/* Assombrit le bouton d’envoi lorsque la souris passe dessus. */
 .fjc-contact-form .md-button:hover {
-  background: #9f0d25;
-  border-color: #9f0d25;
+  background: #9f0d25;  /* Définit la couleur d’arrière-plan. */
+  border-color: #9f0d25;  /* Définit la couleur de l’ensemble des bordures. */
 }
 
+/* Rend les informations complémentaires du contact plus discrètes. */
 .fjc-contact-info {
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.8rem;  /* Fixe la taille du texte à 0.8rem. */
+  opacity: 0.8;  /* Règle la transparence : 0 = invisible, 1 = totalement opaque. */
 }
 
+/* Carte Google Maps responsive */
+
+/* Crée un conteneur de carte Google Maps aux coins arrondis. */
+.fjc-google-map {
+  width: 100%;  /* Définit la largeur à 100%. */
+  margin: 20px 0;  /* Règle les marges extérieures (20px 0). */
+  border-radius: 12px;  /* Arrondit les angles de l’élément. */
+  overflow: hidden;  /* Gère ce qui dépasse du cadre de cet élément. */
+}
+
+/* Dimensionne l’intégration iframe de Google Maps et supprime sa bordure. */
+.fjc-google-map iframe {
+  display: block;  /* Place l’élément sur sa propre ligne en occupant l’espace disponible. */
+  width: 100%;  /* Définit la largeur à 100%. */
+  height: 400px;  /* Définit la hauteur à 400px. */
+  border: 0;  /* Définit l’épaisseur, le style et la couleur du contour. */
+}
+
+/* Réduit la hauteur de la carte intégrée sur les écrans de 768 px ou moins. */
+
+@media (max-width: 768px) {
+
+  /* Sur écran de 768 px ou moins : dimensionne l’intégration iframe de Google Maps et supprime sa bordure. */
+  .fjc-google-map iframe {
+    height: 300px;  /* Définit la hauteur à 300px. */
+  }
+
+}

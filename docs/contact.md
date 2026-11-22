@@ -73,23 +73,24 @@ Une question ? Envoyez-nous un message !
 [Facebook](https://www.facebook.com/p/FJChamphol-Handball-61581799652987/?locale=fr_FR)
 
 
-
 ## Lieu du gymnase
 
 **Halle des Sports de Champhol**
 
 7 rue Louis Blériot, 28300 CHAMPHOL
 
-<iframe
-  src="https://maps.google.com/maps?q=7%20Rue%20Louis%20Bleriot%2C%2028300%20Champhol%2C%20France&amp;z=16&amp;output=embed"
-  width="100%"
-  height="400"
-  style="border:0; border-radius:12px;"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  title="Localisation du gymnase FJC Handball">
-</iframe>
+<div class="fjc-google-map">
+  <iframe
+    src="https://www.google.com/maps?q=48.462134,1.5072237&amp;z=17&amp;output=embed"
+    width="100%"
+    height="400"
+    style="border:0; border-radius:12px;"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Localisation du gymnase FJC Handball">
+  </iframe>
+</div>
 
 <p>
   <a

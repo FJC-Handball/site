@@ -1,11 +1,10 @@
 ---
 template: home.html
-title: Accueil - FJC Handball
+title: FJC Handball
 description: >-
-  Bienvenue sur le site du FJ CHAMPHOL HANDBALL.
-  Retrouvez nos équipes ainsi que leurs matchs,
-  les actualités du club et toutes les
-  informations pour tenter votre aventure dans notre club.
+  Vous cherchez un club de hand à Champhol ?
+  Découvrez le FJC Handball, du baby-hand aux loisirs,
+  et contactez-nous pour les entraînements et les inscription
 hide:
   - navigation
   - toc
